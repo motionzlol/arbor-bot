@@ -27,6 +27,8 @@ if token:
         print(f'{config.config_data.bot.name} has got a connection to discord')
         print(f'bot id is: {client.user.id}')
         print(f'connected to {len(client.guilds)} servers')
+
+        await client.change_presence(activity=discord.CustomActivity(name="in development"))
     
     client.run(token)
 else:
