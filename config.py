@@ -6,6 +6,14 @@ from typing import Dict, Any
 _config_data = None
 config = None
 
+def _dict_to_namespace(data):
+    if isinstance(data, dict):
+        return SimpleNamespace(**{k: _dict_to_namespace(v) for k, v in data.items()})
+    elif isinstance(data, list):
+        return [_dict_to_namespace(item) for item in data]
+    else:
+        return data
+
 def load_config() -> Dict[str, Any]:
     global _config_data, config
     
@@ -18,7 +26,7 @@ def load_config() -> Dict[str, Any]:
         with open(config_path, 'rb') as f:
             _config_data = tomllib.load(f)
         
-        config = SimpleNamespace(**_config_data)
+        config = _dict_to_namespace(_config_data)
         return _config_data
     except FileNotFoundError:
         raise FileNotFoundError(f"Configuration file not found: {config_path}")
@@ -31,7 +39,7 @@ def get_config() -> Dict[str, Any]:
     return _config_data
 
 try:
-    _config_data = load_config()
+    load_config()
 except Exception as e:
     print(f"Warning: Could not load configuration: {e}")
     _config_data = {
@@ -39,4 +47,4 @@ except Exception as e:
         'colors': {'embeds': '#9dd2ff'},
         'owners': {'ids': []}
     }
-    config = SimpleNamespace(**_config_data)
+    config = _dict_to_namespace(_config_data)
