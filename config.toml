@@ -1,0 +1,8 @@
+[bot]
+name = "Orion"
+
+[colors]
+embeds = "#9dd2ff"
+
+[owners]
+ids = ["1362053982444454119", "985500882420514856"]
