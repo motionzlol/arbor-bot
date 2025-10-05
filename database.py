@@ -58,23 +58,3 @@ def ping_database():
         return round((end_time - start_time) * 1000)  # Return ping in milliseconds
     except Exception:
         return None
-
-def save_user_language_preference(user_id: int, language: str):
-    """Save or update a user's language preference"""
-    db = get_database()
-    collection = db.user_language_preferences
-
-    # Upsert the user's language preference
-    collection.update_one(
-        {'user_id': user_id},
-        {'$set': {'language': language, 'updated_at': time.time()}},
-        upsert=True
-    )
-
-def get_user_language_preference(user_id: int) -> str:
-    """Get a user's language preference, returns None if not set"""
-    db = get_database()
-    collection = db.user_language_preferences
-
-    result = collection.find_one({'user_id': user_id})
-    return result['language'] if result else None
