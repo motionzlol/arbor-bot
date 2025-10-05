@@ -1,0 +1,186 @@
+{
+  "generic": {
+    "when": "Коли",
+    "channel": "Канал",
+    "reason": "Причина",
+    "unlocks": "Розблокування",
+    "time_remaining": "Залишок часу",
+    "requested_by": "За запитом {name}",
+    "required": "Обов'язково",
+    "missing": "Відсутнє",
+    "none": "Немає"
+  },
+  "errors": {
+    "invalid_time_format": "Недійсний формат часу. Використовуйте формати, наприклад: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "Час нагадування має бути в майбутньому",
+    "schedule_time_must_be_future": "Час розкладу має бути в майбутньому",
+    "failed_set_reminder": "Не вдалося встановити нагадування: {error}",
+    "failed_list_reminders": "Не вдалося отримати нагадування: {error}",
+    "failed_cancel_reminder": "Не вдалося скасувати нагадування: {error}",
+    "failed_create_schedule": "Не вдалося створити розклад: {error}",
+    "no_messages_found": "У цьому каналі не знайдено жодного повідомлення.",
+    "no_permission_history": "У мене немає дозволу переглядати історію цього каналу.",
+    "failed_fetch_first_message": "Не вдалося отримати перше повідомлення: {error}",
+    "invalid_color_format": "Недійсний формат кольору. Використовуйте шістнадцятковий код, наприклад #FF5733, або значення RGB на кшталт '255 87 51'",
+    "cannot_give_rep": "Ви не можете надати репутацію цьому користувачеві",
+    "rep_cooldown": "Ви зможете знову надати репутацію через {hours} год {minutes} хв",
+    "failed_set_afk": "Не вдалося встановити статус AFK: {error}",
+    "failed_clear_afk": "Не вдалося зняти статус AFK: {error}",
+    "invalid_duration_format": "Недійсний формат тривалості. Наприклад: 10m, 2h, 1d, 1:30"
+  },
+  "reminders": {
+    "set_title": "Нагадування встановлено",
+    "set_description": "Я нагадаю вам: **{what}**",
+    "set_footer": "ID: {identifier}",
+    "reminder_title": "Нагадування",
+    "reminder_description": "**{message}**",
+    "footer_for": "Нагадування для {name}",
+    "list_title": "Ваші нагадування",
+    "list_empty": "У вас немає жодних нагадувань.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\\n`ID:` {identifier}\\n{message}",
+    "list_footer": "Показано {count} із {total} нагадувань.",
+    "cancel_invalid_id": "Недійсний ID нагадування.",
+    "cancel_not_found": "Нагадування з таким ID не знайдено.",
+    "cancel_title": "Нагадування скасовано",
+    "cancel_description": "Нагадування **{what}**, заплановане на <t:{timestamp}:R>, видалено."
+  },
+  "schedules": {
+    "scheduled_title": "Запланована подія",
+    "scheduled_description": "**{title}**",
+    "starting_now": "**{title}** починається просто зараз!"
+  },
+  "avatar": {
+    "title": "Аватар {name}"
+  },
+  "color": {
+    "title": "Зразок кольору"
+  },
+  "firstmessage": {
+    "title": "Перше повідомлення",
+    "jump": "Перейти до повідомлення",
+    "author": "Автор"
+  },
+  "rep": {
+    "given_title": "Надано репутацію",
+    "given_description": "{giver} надав користувачу {user} бал репутації{reason_suffix}"
+  },
+  "userinfo": {
+    "basic_information": "Основна інформація",
+    "username": "Ім'я користувача",
+    "id": "ID",
+    "reputation": "Репутація",
+    "account_age": "Вік облікового запису",
+    "created": "Створено",
+    "server_information": "Інформація про сервер",
+    "nickname": "Нікнейм",
+    "joined": "Приєднався",
+    "server_age": "Час на сервері",
+    "top_roles": "Найвищі ролі",
+    "status_activity": "Статус і активність",
+    "status": "Статус",
+    "activity": "Активність",
+    "days": "{days} днів",
+    "statuses": {
+      "online": "У мережі",
+      "idle": "Неактивний",
+      "dnd": "Не турбувати",
+      "offline": "Поза мережею",
+      "unknown": "Невідомо"
+    },
+    "activities": {
+      "none": "Немає активності",
+      "playing": "Грає в {name}",
+      "streaming": "Транслює {name}",
+      "custom": "Користувацький статус"
+    },
+    "key_permissions": "Основні дозволи",
+    "perms": {
+      "administrator": "Адміністратор",
+      "manage_server": "Керування сервером",
+      "manage_messages": "Керування повідомленнями",
+      "kick_members": "Видалення учасників",
+      "ban_members": "Блокування учасників"
+    }
+  },
+  "afk": {
+    "set_title": "Статус AFK встановлено",
+    "set_description": "Я повідомлю інших, що ви AFK: **{message}**",
+    "cleared_title": "Статус AFK знято",
+    "cleared_description": "З поверненням!",
+    "none_title": "Немає статусу AFK",
+    "none_description": "Ви й не були AFK!",
+    "cleared_back": "З поверненням! Ви були AFK {duration}",
+    "user_is_afk_title": "{name} зараз AFK",
+    "footer_afk_for": "AFK протягом {duration}"
+  },
+  "moderation": {
+    "channel_locked": "Канал заблоковано",
+    "channel_unlocked": "Канал розблоковано",
+    "unlocked_note": "Цей канал розблоковано",
+    "auto_unlocked_note": "Цей канал автоматично розблоковано",
+    "missing_permissions": "Бракує дозволів",
+    "bot_missing_permissions": "Боту бракує дозволів"
+  },
+  "fun": {
+    "coinflip_result": "**Результат підкидання монети:** {result}!",
+    "coin_heads": "Орел",
+    "coin_tails": "Решка",
+    "dice_result": "**Результат кидка кубика:** {result}",
+    "8ball_format": "**Питання:** {question}\\n**Відповідь:** {answer}",
+    "8ball_responses": [
+      "Це безперечно.",
+      "Без сумнівів.",
+      "Жодних сумнівів.",
+      "Так - однозначно.",
+      "Можете на це покластися.",
+      "Як на мене, так.",
+      "Найімовірніше.",
+      "Перспективи хороші.",
+      "Так.",
+      "Знаки вказують на \"так\".",
+      "Відповідь нечітка, спробуйте ще раз.",
+      "Спитайте пізніше.",
+      "Краще зараз не казати.",
+      "Зараз не можу передбачити.",
+      "Зосередьтесь і запитайте знову.",
+      "Не розраховуйте на це.",
+      "Моя відповідь - ні.",
+      "Мої джерела кажуть \"ні\".",
+      "Перспективи не дуже.",
+      "Дуже сумнівно."
+    ],
+    "meme_parse_fail": "Не вдалося розпізнати URL мема. Спробуйте ще раз.",
+    "meme_api_status": "Не вдалося отримати мем. API повернув статус: {status}",
+    "meme_client_error": "Під час підключення до API мемів сталася помилка. Спробуйте пізніше.",
+    "unexpected_error": "Сталася неочікувана помилка. Будь ласка, спробуйте пізніше."
+  },
+  "language": {
+    "set_success": "Вашу мову встановлено на {language}",
+    "current": "Ваша поточна мова - {language}",
+    "unsupported": "Непідтримуваний код мови. Доступні: {available}",
+    "help": "Змініть мовні налаштування",
+    "embed_title": "Налаштування мови",
+    "current_field": "Поточна мова",
+    "available_field": "Доступні мови",
+    "show_all_hint": "Використовуйте параметр 'show_all', щоб показати всі {count} мови.",
+    "change_hint": "Вкажіть код, щоб змінити мову.",
+    "names": {
+      "en": "Англійська",
+      "es": "Іспанська",
+      "fr": "Французька",
+      "de": "Німецька",
+      "ru": "Російська",
+      "ja-JP": "Японська",
+      "sq": "Албанська",
+      "uk-UA": "Ukrainian"
+    }
+  },
+  "utilities": {
+    "title": "Інформація про {name}",
+    "description": "Інформація про {name}",
+    "bot_latency": "Затримка бота",
+    "database_latency": "Затримка бази даних",
+    "offline": "Поза мережею",
+    "powered_by": "Працює на {name}"
+  }
+}
