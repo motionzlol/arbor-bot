@@ -48,6 +48,9 @@ def connect_database():
         if 'rep_cooldowns' not in _database.list_collection_names():
             _database.create_collection('rep_cooldowns')
 
+        if 'channel_locks' not in _database.list_collection_names():
+            _database.create_collection('channel_locks')
+
     except (ServerSelectionTimeoutError, ConnectionFailure) as e:
         raise ConnectionError(f"Failed to connect to database: {e}")
     except Exception as e:

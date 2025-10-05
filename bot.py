@@ -9,7 +9,7 @@ load_dotenv()
 token = os.getenv('prodtoken')
 
 if token:
-    client = commands.Bot(command_prefix='a.', intents=discord.Intents.all())
+    client = commands.Bot(command_prefix='a.', intents=discord.Intents.all(), help_command=None)
     
     async def load_cogs():
         for filename in os.listdir('./cogs'):

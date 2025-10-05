@@ -28,30 +28,50 @@ class QoL(commands.Cog):
     def parse_time(self, time_str, user):
         now = datetime.datetime.now(datetime.timezone.utc)
 
-        time_patterns = {
-            r'(\d+)s': lambda m: datetime.timedelta(seconds=int(m.group(1))),
-            r'(\d+)m': lambda m: datetime.timedelta(minutes=int(m.group(1))),
-            r'(\d+)h': lambda m: datetime.timedelta(hours=int(m.group(1))),
-            r'(\d+)d': lambda m: datetime.timedelta(days=int(m.group(1))),
-            r'(\d+):(\d+)': lambda m: datetime.timedelta(hours=int(m.group(1)), minutes=int(m.group(2))),
-            r'(\d+)/(\d+)/(\d+)\s+(\d+):(\d+)': lambda m: datetime.datetime(int(m.group(3)), int(m.group(1)), int(m.group(2)), int(m.group(4)), int(m.group(5)), tzinfo=datetime.timezone.utc) - now,
-        }
+        abs_date_match = re.search(r'^(\d{1,2})/(\d{1,2})/(\d{4})\s+(\d{1,2}):(\d{2})$', time_str.strip())
+        if abs_date_match:
+            try:
+                dt = datetime.datetime(
+                    int(abs_date_match.group(3)),
+                    int(abs_date_match.group(1)),
+                    int(abs_date_match.group(2)),
+                    int(abs_date_match.group(4)),
+                    int(abs_date_match.group(5)),
+                    tzinfo=datetime.timezone.utc,
+                )
+                return dt
+            except ValueError:
+                return None
 
-        for pattern, converter in time_patterns.items():
-            match = re.search(pattern, time_str)
-            if match:
-                try:
-                    delta = converter(match)
-                    if isinstance(delta, datetime.timedelta):
-                        return now + delta
-                    return delta
-                except ValueError:
-                    continue
+        abs_time_match = re.search(r'^(\d{1,2}):(\d{2})$', time_str.strip())
+        if abs_time_match:
+            try:
+                target = now.replace(hour=int(abs_time_match.group(1)), minute=int(abs_time_match.group(2)), second=0, microsecond=0)
+                if target <= now:
+                    target += datetime.timedelta(days=1)
+                return target
+            except ValueError:
+                return None
+
+        matches = re.findall(r'(\d+)\s*([smhd])', time_str.lower())
+        if matches:
+            total = datetime.timedelta()
+            for amount, unit in matches:
+                n = int(amount)
+                if unit == 's':
+                    total += datetime.timedelta(seconds=n)
+                elif unit == 'm':
+                    total += datetime.timedelta(minutes=n)
+                elif unit == 'h':
+                    total += datetime.timedelta(hours=n)
+                elif unit == 'd':
+                    total += datetime.timedelta(days=n)
+            return now + total if total.total_seconds() > 0 else None
 
         return None
 
     @commands.hybrid_command(name="remind", description="Set a reminder")
-    async def remind(self, ctx, when: str, what: str):
+    async def remind(self, ctx, when: str, *, what: str):
         reminder_time = self.parse_time(when, ctx.author)
 
         if not reminder_time:
@@ -78,10 +98,11 @@ class QoL(commands.Cog):
                 "created_at": datetime.datetime.now(datetime.timezone.utc)
             }
 
-            result = reminders_collection.insert_one(reminder_data)
+            reminders_collection.insert_one(reminder_data)
 
             time_diff = reminder_time - datetime.datetime.now(datetime.timezone.utc)
-            hours, remainder = divmod(int(time_diff.total_seconds()), 3600)
+            total_secs = int(time_diff.total_seconds())
+            hours, remainder = divmod(max(total_secs, 0), 3600)
             minutes, seconds = divmod(remainder, 60)
 
             embed = discord.Embed(
@@ -90,37 +111,16 @@ class QoL(commands.Cog):
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
             embed.add_field(name="When", value=f"<t:{int(reminder_time.timestamp())}:R>", inline=True)
-            embed.add_field(name="Time Remaining", value=f"{hours}h {minutes}m", inline=True)
+            pretty_remaining = (
+                f"{hours}h {minutes}m {seconds}s" if hours else (f"{minutes}m {seconds}s" if minutes else f"{seconds}s")
+            )
+            embed.add_field(name="Time Remaining", value=pretty_remaining, inline=True)
 
             await ctx.send(embed=embed)
-
-            task_id = f"reminder_{result.inserted_id}"
-            task = asyncio.create_task(self.send_reminder(task_id, ctx.author.id, ctx.channel.id, what, reminder_time))
-            self.reminder_tasks[task_id] = task
 
         except Exception as e:
             await ctx.send(f"Failed to set reminder: {str(e)}")
 
-    async def send_reminder(self, task_id, user_id, channel_id, message, remind_time):
-        await asyncio.sleep((remind_time - datetime.datetime.now(datetime.timezone.utc)).total_seconds())
-
-        try:
-            channel = self.client.get_channel(channel_id)
-            if channel:
-                user = self.client.get_user(user_id)
-                embed = discord.Embed(
-                    title="Reminder",
-                    description=f"**{message}**",
-                    color=discord.Color.from_str(config.config_data.colors.embeds)
-                )
-                if user:
-                    embed.set_footer(text=f"Reminder for {user.display_name}")
-                await channel.send(f"<@{user_id}>", embed=embed)
-        except Exception as e:
-            print(f"Failed to send reminder: {e}")
-
-        if task_id in self.reminder_tasks:
-            del self.reminder_tasks[task_id]
 
     @commands.hybrid_command(name="schedule", description="Create a scheduled event")
     async def schedule(self, ctx, title: str, time: str, channel: discord.TextChannel = None):
@@ -507,7 +507,7 @@ class QoL(commands.Cog):
         except Exception as e:
             print(f"Error in AFK on_message listener: {e}")
 
-    @tasks.loop(minutes=1)
+    @tasks.loop(seconds=5)
     async def check_reminders(self):
         db = database.get_database()
         reminders_collection = db.reminders
