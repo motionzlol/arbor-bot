@@ -4,3 +4,4 @@ pymongo
 deep-translator
 cachetools
 redis
+asyncpraw
