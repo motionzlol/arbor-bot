@@ -57,6 +57,15 @@ def connect_database():
         if 'channel_locks' not in _database.list_collection_names():
             _database.create_collection('channel_locks')
 
+        if 'warnings' not in _database.list_collection_names():
+            _database.create_collection('warnings')
+
+        if 'warning_counters' not in _database.list_collection_names():
+            _database.create_collection('warning_counters')
+
+        if 'moderation_settings' not in _database.list_collection_names():
+            _database.create_collection('moderation_settings')
+
     except (ServerSelectionTimeoutError, ConnectionFailure) as e:
         raise ConnectionError(f"Failed to connect to database: {e}")
     except Exception as e:
