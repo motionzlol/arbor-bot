@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 from typing import Optional
 import aiohttp
+import i18n
 
 class FunCog(commands.Cog):
 
@@ -11,25 +12,24 @@ class FunCog(commands.Cog):
 
     @commands.hybrid_command(name="coinflip", description="Flip a coin - heads or tails!")
     async def coinflip(self, ctx):
-        result = random.choice(["heads", "tails"])
-        await ctx.send(f"**Coin flip result:** {result.capitalize()}!")
+        label = random.choice([
+            i18n.t(ctx.author.id, "fun.coin_heads"),
+            i18n.t(ctx.author.id, "fun.coin_tails"),
+        ])
+        await ctx.send(i18n.t(ctx.author.id, "fun.coinflip_result", result=label))
 
     @commands.hybrid_command(name="dice", description="Roll a dice - 1-6!")
     async def dice(self, ctx):
         result = random.randint(1, 6)
-        await ctx.send(f"**Dice roll result:** {result}")
+        await ctx.send(i18n.t(ctx.author.id, "fun.dice_result", result=result))
 
     @commands.hybrid_command(name="8ball", description="Ask the magic 8-ball a yes/no question")
     async def eight_ball(self, ctx, *, question: str):
-        responses = [
-            "It is certain.", "It is decidedly so.", "Without a doubt.", "Yes - definitely.",
-            "You may rely on it.", "As I see it, yes.", "Most likely.", "Outlook good.",
-            "Yes.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.",
-            "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.",
-            "Don't count on it.", "My reply is no.", "My sources say no.",
-            "Outlook not so good.", "Very doubtful."
-        ]
-        await ctx.send(f"**Question:** {question}\n**Answer:** {random.choice(responses)}")
+        responses = i18n.tr(ctx.author.id, "fun.8ball_responses")
+        if not isinstance(responses, list) or not responses:
+            responses = ["Yes.", "No."]
+        answer = random.choice(responses)
+        await ctx.send(i18n.t(ctx.author.id, "fun.8ball_format", question=question, answer=answer))
 
     @commands.hybrid_command(name="meme", description="Get a random meme from the internet")
     async def meme(self, ctx):
@@ -42,14 +42,14 @@ class FunCog(commands.Cog):
                         if meme_url:
                             await ctx.send(meme_url)
                         else:
-                            await ctx.send("Could not parse the meme URL. Please try again.")
+                            await ctx.send(i18n.t(ctx.author.id, "fun.meme_parse_fail"))
                     else:
-                        await ctx.send(f"Could not fetch a meme. API returned status: {response.status}")
+                        await ctx.send(i18n.t(ctx.author.id, "fun.meme_api_status", status=response.status))
         except aiohttp.ClientError:
-            await ctx.send("An error occurred while trying to connect to the meme API. Please try again later.")
+            await ctx.send(i18n.t(ctx.author.id, "fun.meme_client_error"))
         except Exception as e:
             print(f"An unexpected error occurred in the meme command: {e}")
-            await ctx.send("An unexpected error occurred. Please try again later.")
+            await ctx.send(i18n.t(ctx.author.id, "fun.unexpected_error"))
 
 
 async def setup(client):

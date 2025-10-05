@@ -1,0 +1,173 @@
+{
+    "generic": {
+    "when": "Quand",
+    "channel": "Salon",
+    "reason": "Raison",
+    "unlocks": "Déverrouillages",
+    "time_remaining": "Temps restant",
+    "requested_by": "Demandé par {name}",
+    "required": "Obligatoire",
+    "missing": "Manquant",
+    "none": "Aucun"
+    },
+    "errors": {
+    "invalid_time_format": "Format d’heure invalide. Utilisez des formats comme : 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "L’heure du rappel doit être dans le futur",
+    "schedule_time_must_be_future": "L’heure de la programmation doit être dans le futur",
+    "failed_set_reminder": "Échec de la création du rappel : {error}",
+    "failed_create_schedule": "Échec de la création du programme : {error}",
+    "no_messages_found": "Aucun message trouvé dans ce salon.",
+    "no_permission_history": "Je n’ai pas l’autorisation de voir l’historique de ce salon.",
+    "failed_fetch_first_message": "Échec de la récupération du premier message : {error}",
+    "invalid_color_format": "Format de couleur invalide. Utilisez un code hexadécimal comme #FF5733 ou des valeurs RVB comme '255 87 51'",
+    "cannot_give_rep": "Vous ne pouvez pas donner de réputation à cet utilisateur",
+    "rep_cooldown": "Vous pourrez redonner de la réputation dans {hours}h {minutes}m",
+    "failed_set_afk": "Échec de la définition du statut AFK : {error}",
+    "failed_clear_afk": "Échec de la suppression du statut AFK : {error}",
+    "invalid_duration_format": "Format de durée invalide. Utilisez par ex. 10m, 2h, 1d, 1:30"
+    },
+    "reminders": {
+    "set_title": "Rappel créé",
+    "set_description": "Je vous rappellerai : {what}",
+    "reminder_title": "Rappel",
+    "reminder_description": "{message}",
+    "footer_for": "Rappel pour {name}"
+    },
+    "schedules": {
+    "scheduled_title": "Événement planifié",
+    "scheduled_description": "{title}",
+    "starting_now": "{title} commence maintenant !"
+    },
+    "avatar": {
+    "title": "Avatar de {name}"
+    },
+    "color": {
+    "title": "Échantillon de couleur"
+    },
+    "firstmessage": {
+    "title": "Premier message",
+    "jump": "Aller au message",
+    "author": "Auteur"
+    },
+    "rep": {
+    "given_title": "Réputation attribuée",
+    "given_description": "{giver} a donné un point de réputation à {user}{reason_suffix}"
+    },
+    "userinfo": {
+    "basic_information": "Informations de base",
+    "username": "Nom d’utilisateur",
+    "id": "ID",
+    "reputation": "Réputation",
+    "account_age": "Ancienneté du compte",
+    "created": "Créé",
+    "server_information": "Informations du serveur",
+    "nickname": "Surnom",
+    "joined": "Rejoint",
+    "server_age": "Ancienneté sur le serveur",
+    "top_roles": "Rôles principaux",
+    "status_activity": "Statut et activité",
+    "status": "Statut",
+    "activity": "Activité",
+    "days": "{days} jours",
+    "statuses": {
+    "online": "En ligne",
+    "idle": "Inactif",
+    "dnd": "Ne pas déranger",
+    "offline": "Hors ligne",
+    "unknown": "Inconnu"
+    },
+    "activities": {
+    "none": "Aucune activité",
+    "playing": "Joue à {name}",
+    "streaming": "Diffuse {name}",
+    "custom": "Statut personnalisé"
+    },
+    "key_permissions": "Permissions clés",
+    "perms": {
+    "administrator": "Administrateur",
+    "manage_server": "Gérer le serveur",
+    "manage_messages": "Gérer les messages",
+    "kick_members": "Expulser des membres",
+    "ban_members": "Bannir des membres"
+    }
+    },
+    "afk": {
+    "set_title": "Statut AFK défini",
+    "set_description": "J’indiquerai aux autres que vous êtes AFK : {message}",
+    "cleared_title": "Statut AFK effacé",
+    "cleared_description": "Bon retour !",
+    "none_title": "Aucun statut AFK",
+    "none_description": "Vous n’étiez pas AFK à l’origine !",
+    "cleared_back": "Bon retour ! Vous avez été AFK pendant {duration}",
+    "user_is_afk_title": "{name} est AFK",
+    "footer_afk_for": "AFK depuis {duration}"
+    },
+    "moderation": {
+    "channel_locked": "Salon verrouillé",
+    "channel_unlocked": "Salon déverrouillé",
+    "unlocked_note": "Ce salon a été déverrouillé",
+    "auto_unlocked_note": "Ce salon a été déverrouillé automatiquement",
+    "missing_permissions": "Permissions manquantes",
+    "bot_missing_permissions": "Permissions du bot manquantes"
+    },
+    "fun": {
+    "coinflip_result": "Résultat du pile ou face : {result} !",
+    "coin_heads": "Pile",
+    "coin_tails": "Face",
+    "dice_result": "Résultat du lancer de dé : {result}",
+    "8ball_format": "Question : {question}\nRéponse : {answer}",
+    "8ball_responses": [
+    "C’est certain.",
+    "C’est décidément ainsi.",
+    "Sans aucun doute.",
+    "Oui – définitivement.",
+    "Vous pouvez compter dessus.",
+    "D’après moi, oui.",
+    "Très probable.",
+    "Perspectives favorables.",
+    "Oui.",
+    "Les signes indiquent oui.",
+    "Réponse floue, réessayez.",
+    "Revenez poser la question plus tard.",
+    "Mieux vaut ne pas vous le dire maintenant.",
+    "Impossible de prédire maintenant.",
+    "Concentrez-vous et redemandez.",
+    "N’y comptez pas.",
+    "Ma réponse est non.",
+    "Mes sources disent non.",
+    "Perspectives peu encourageantes.",
+    "Très douteux."
+    ],
+    "meme_parse_fail": "Impossible d’analyser l’URL du mème. Veuillez réessayer.",
+    "meme_api_status": "Impossible de récupérer un mème. L’API a renvoyé le statut : {status}",
+    "meme_client_error": "Une erreur est survenue lors de la connexion à l’API de mèmes. Veuillez réessayer plus tard.",
+    "unexpected_error": "Une erreur inattendue est survenue. Veuillez réessayer plus tard."
+    },
+    "language": {
+    "set_success": "Votre langue a été définie sur {language}",
+    "current": "Votre langue actuelle est {language}",
+    "unsupported": "Code de langue non pris en charge. Disponibles : {available}",
+    "help": "Modifier votre préférence de langue",
+    "embed_title": "Paramètres de langue",
+    "current_field": "Langue actuelle",
+    "available_field": "Langues disponibles",
+    "show_all_hint": "Utilisez l’option 'show_all' pour lister les {count} langues.",
+    "change_hint": "Fournissez un code pour changer votre langue.",
+    "names": {
+      "en": "Anglais",
+      "es": "Espagnol",
+      "fr": "Français",
+      "de": "Allemand",
+      "ru": "Russe",
+      "ja-JP": "Japonais"
+    }
+  },
+    "utilities": {
+    "title": "Informations de {name}",
+    "description": "Informations sur {name}",
+    "bot_latency": "Latence du bot",
+    "database_latency": "Latence de la base de données",
+    "offline": "Hors ligne",
+    "powered_by": "Propulsé par {name}"
+    }
+    }

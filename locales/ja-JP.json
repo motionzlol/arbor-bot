@@ -1,0 +1,173 @@
+{
+    "generic": {
+    "when": "日時",
+    "channel": "チャンネル",
+    "reason": "理由",
+    "unlocks": "解除",
+    "time_remaining": "残り時間",
+    "requested_by": "{name} によるリクエスト",
+    "required": "必須",
+    "missing": "不足",
+    "none": "なし"
+    },
+    "errors": {
+    "invalid_time_format": "無効な時刻形式です。以下のような形式を使用してください: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "リマインダーの時刻は未来である必要があります",
+    "schedule_time_must_be_future": "スケジュールの時刻は未来である必要があります",
+    "failed_set_reminder": "リマインダーの設定に失敗しました: {error}",
+    "failed_create_schedule": "スケジュールの作成に失敗しました: {error}",
+    "no_messages_found": "そのチャンネルにはメッセージが見つかりませんでした。",
+    "no_permission_history": "そのチャンネルの履歴を表示する権限がありません。",
+    "failed_fetch_first_message": "最初のメッセージの取得に失敗しました: {error}",
+    "invalid_color_format": "無効な色形式です。#FF5733 のような 16 進数、または '255 87 51' のような RGB 値を使用してください",
+    "cannot_give_rep": "そのユーザーに評価を与えることはできません",
+    "rep_cooldown": "再度評価できるのは {hours}h {minutes}m 後です",
+    "failed_set_afk": "AFK ステータスの設定に失敗しました: {error}",
+    "failed_clear_afk": "AFK ステータスの解除に失敗しました: {error}",
+    "invalid_duration_format": "無効な期間形式です。10m, 2h, 1d, 1:30 のように入力してください"
+    },
+    "reminders": {
+    "set_title": "リマインダーを設定しました",
+    "set_description": "次の内容をリマインドします: {what}",
+    "reminder_title": "リマインダー",
+    "reminder_description": "{message}",
+    "footer_for": "{name} へのリマインダー"
+    },
+    "schedules": {
+    "scheduled_title": "予定されたイベント",
+    "scheduled_description": "{title}",
+    "starting_now": "ただいま {title} が開始しました！"
+    },
+    "avatar": {
+    "title": "{name} のアバター"
+    },
+    "color": {
+    "title": "色見本"
+    },
+    "firstmessage": {
+    "title": "最初のメッセージ",
+    "jump": "メッセージへ移動",
+    "author": "投稿者"
+    },
+    "rep": {
+    "given_title": "評価を付与しました",
+    "given_description": "{giver} が {user} に評価ポイントを付与しました{reason_suffix}"
+    },
+    "userinfo": {
+    "basic_information": "基本情報",
+    "username": "ユーザー名",
+    "id": "ID",
+    "reputation": "評価",
+    "account_age": "アカウント年齢",
+    "created": "作成日",
+    "server_information": "サーバー情報",
+    "nickname": "ニックネーム",
+    "joined": "参加日",
+    "server_age": "サーバー在籍期間",
+    "top_roles": "主なロール",
+    "status_activity": "ステータスとアクティビティ",
+    "status": "ステータス",
+    "activity": "アクティビティ",
+    "days": "{days} 日",
+    "statuses": {
+    "online": "オンライン",
+    "idle": "退席中",
+    "dnd": "取り込み中",
+    "offline": "オフライン",
+    "unknown": "不明"
+    },
+    "activities": {
+    "none": "アクティビティなし",
+    "playing": "{name} をプレイ中",
+    "streaming": "{name} を配信中",
+    "custom": "カスタムステータス"
+    },
+    "key_permissions": "主要な権限",
+    "perms": {
+    "administrator": "管理者",
+    "manage_server": "サーバーの管理",
+    "manage_messages": "メッセージの管理",
+    "kick_members": "メンバーのキック",
+    "ban_members": "メンバーのBAN"
+    }
+    },
+    "afk": {
+    "set_title": "AFK ステータスを設定しました",
+    "set_description": "あなたが AFK であることを他の人に知らせます: {message}",
+    "cleared_title": "AFK ステータスを解除しました",
+    "cleared_description": "おかえりなさい！",
+    "none_title": "AFK ステータスはありません",
+    "none_description": "もともと AFK ではありませんでした！",
+    "cleared_back": "おかえりなさい！AFK の時間: {duration}",
+    "user_is_afk_title": "{name} は AFK です",
+    "footer_afk_for": "AFK 時間: {duration}"
+    },
+    "moderation": {
+    "channel_locked": "チャンネルをロックしました",
+    "channel_unlocked": "チャンネルのロックを解除しました",
+    "unlocked_note": "このチャンネルのロックは解除されました",
+    "auto_unlocked_note": "このチャンネルは自動的にロック解除されました",
+    "missing_permissions": "権限が不足しています",
+    "bot_missing_permissions": "ボットに必要な権限がありません"
+    },
+    "fun": {
+    "coinflip_result": "コイントスの結果: {result}！",
+    "coin_heads": "表",
+    "coin_tails": "裏",
+    "dice_result": "サイコロの結果: {result}",
+    "8ball_format": "質問: {question}\n回答: {answer}",
+    "8ball_responses": [
+    "確かです。",
+    "まったくそのとおりです。",
+    "間違いありません。",
+    "はい—間違いなく。",
+    "信頼して大丈夫です。",
+    "私の見立てでは、はい。",
+    "おそらくそうです。",
+    "見通しは良好です。",
+    "はい。",
+    "兆候は「はい」を示しています。",
+    "返答があいまいです。もう一度試してください。",
+    "後でもう一度聞いてください。",
+    "今は言わないほうがよさそうです。",
+    "今は予測できません。",
+    "集中してもう一度質問してください。",
+    "それは当てにしないでください。",
+    "私の答えはノーです。",
+    "私の情報源はノーと言っています。",
+    "先行きはあまり良くありません。",
+    "かなり疑わしいです。"
+    ],
+    "meme_parse_fail": "ミームの URL を解析できませんでした。もう一度お試しください。",
+    "meme_api_status": "ミームを取得できませんでした。API のステータス: {status}",
+    "meme_client_error": "ミーム API への接続中にエラーが発生しました。しばらくしてからもう一度お試しください。",
+    "unexpected_error": "予期しないエラーが発生しました。しばらくしてからもう一度お試しください。"
+    },
+    "language": {
+    "set_success": "言語を {language} に設定しました",
+    "current": "現在の言語は {language} です",
+    "unsupported": "サポートされていない言語コードです。利用可能: {available}",
+    "help": "言語設定を変更する",
+    "embed_title": "言語設定",
+    "current_field": "現在の言語",
+    "available_field": "利用可能な言語",
+    "show_all_hint": "'show_all' オプションを使って、全 {count} 言語を表示します。",
+    "change_hint": "変更したい言語コードを入力してください。",
+    "names": {
+      "en": "英語",
+      "es": "スペイン語",
+      "fr": "フランス語",
+      "de": "ドイツ語",
+      "ru": "ロシア語",
+      "ja-JP": "日本語"
+    }
+  },
+    "utilities": {
+    "title": "{name} の情報",
+    "description": "{name} の情報",
+    "bot_latency": "ボットのレイテンシ",
+    "database_latency": "データベースのレイテンシ",
+    "offline": "オフライン",                                                                                                                                                                                                                                                                                                    
+    "powered_by": "{name} により稼働"
+    }
+    }

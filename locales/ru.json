@@ -1,0 +1,173 @@
+{
+    "generic": {
+    "when": "Когда",
+    "channel": "Канал",
+    "reason": "Причина",
+    "unlocks": "Разблокировка",
+    "time_remaining": "Оставшееся время",
+    "requested_by": "По запросу {name}",
+    "required": "Обязательно",
+    "missing": "Отсутствует",
+    "none": "Нет"
+    },
+    "errors": {
+    "invalid_time_format": "Неверный формат времени. Используйте форматы, например: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "Время напоминания должно быть в будущем",
+    "schedule_time_must_be_future": "Время расписания должно быть в будущем",
+    "failed_set_reminder": "Не удалось установить напоминание: {error}",
+    "failed_create_schedule": "Не удалось создать расписание: {error}",
+    "no_messages_found": "В этом канале не найдено сообщений.",
+    "no_permission_history": "У меня нет прав на просмотр истории этого канала.",
+    "failed_fetch_first_message": "Не удалось получить первое сообщение: {error}",
+    "invalid_color_format": "Неверный формат цвета. Используйте шестнадцатеричный код вроде #FF5733 или значения RGB вида '255 87 51'",
+    "cannot_give_rep": "Вы не можете выдать репутацию этому пользователю",
+    "rep_cooldown": "Вы сможете выдать репутацию через {hours}ч {minutes}м",
+    "failed_set_afk": "Не удалось установить статус AFK: {error}",
+    "failed_clear_afk": "Не удалось снять статус AFK: {error}",
+    "invalid_duration_format": "Неверный формат длительности. Например: 10m, 2h, 1d, 1:30"
+    },
+    "reminders": {
+    "set_title": "Напоминание установлено",
+    "set_description": "Я напомню вам: {what}",
+    "reminder_title": "Напоминание",
+    "reminder_description": "{message}",
+    "footer_for": "Напоминание для {name}"
+    },
+    "schedules": {
+    "scheduled_title": "Запланированное событие",
+    "scheduled_description": "{title}",
+    "starting_now": "{title} начинается прямо сейчас!"
+    },
+    "avatar": {
+    "title": "Аватар {name}"
+    },
+    "color": {
+    "title": "Образец цвета"
+    },
+    "firstmessage": {
+    "title": "Первое сообщение",
+    "jump": "Перейти к сообщению",
+    "author": "Автор"
+    },
+    "rep": {
+    "given_title": "Репутация выдана",
+    "given_description": "{giver} выдал очко репутации {user}{reason_suffix}"
+    },
+    "userinfo": {
+    "basic_information": "Основная информация",
+    "username": "Имя пользователя",
+    "id": "ID",
+    "reputation": "Репутация",
+    "account_age": "Возраст аккаунта",
+    "created": "Создан",
+    "server_information": "Информация о сервере",
+    "nickname": "Никнейм",
+    "joined": "Присоединился",
+    "server_age": "Стаж на сервере",
+    "top_roles": "Верхние роли",
+    "status_activity": "Статус и активность",
+    "status": "Статус",
+    "activity": "Активность",
+    "days": "{days} дней",
+    "statuses": {
+    "online": "В сети",
+    "idle": "Неактивен",
+    "dnd": "Не беспокоить",
+    "offline": "Не в сети",
+    "unknown": "Неизвестно"
+    },
+    "activities": {
+    "none": "Нет активности",
+    "playing": "Играет в {name}",
+    "streaming": "Стримит {name}",
+    "custom": "Пользовательский статус"
+    },
+    "key_permissions": "Ключевые права доступа",
+    "perms": {
+    "administrator": "Администратор",
+    "manage_server": "Управление сервером",
+    "manage_messages": "Управление сообщениями",
+    "kick_members": "Выгонять участников",
+    "ban_members": "Блокировать участников"
+    }
+    },
+    "afk": {
+    "set_title": "Статус AFK установлен",
+    "set_description": "Я сообщу другим, что вы AFK: {message}",
+    "cleared_title": "Статус AFK снят",
+    "cleared_description": "С возвращением!",
+    "none_title": "Нет статуса AFK",
+    "none_description": "Вы и не были AFK!",
+    "cleared_back": "С возвращением! Вы были AFK {duration}",
+    "user_is_afk_title": "{name} сейчас AFK",
+    "footer_afk_for": "AFK в течение {duration}"
+    },
+    "moderation": {
+    "channel_locked": "Канал заблокирован",
+    "channel_unlocked": "Канал разблокирован",
+    "unlocked_note": "Этот канал был разблокирован",
+    "auto_unlocked_note": "Этот канал был автоматически разблокирован",
+    "missing_permissions": "Недостаточно прав",
+    "bot_missing_permissions": "У бота нет необходимых прав"
+    },
+    "fun": {
+    "coinflip_result": "Результат подбрасывания монеты: {result}!",
+    "coin_heads": "Орёл",
+    "coin_tails": "Решка",
+    "dice_result": "Результат броска кости: {result}",
+    "8ball_format": "Вопрос: {question}\nОтвет: {answer}",
+    "8ball_responses": [
+    "Это несомненно.",
+    "Определённо так.",
+    "Без всяких сомнений.",
+    "Да — однозначно.",
+    "Можете на это рассчитывать.",
+    "Как я вижу, да.",
+    "Скорее всего.",
+    "Перспективы хорошие.",
+    "Да.",
+    "Знаки указывают на «да».",
+    "Ответ туманен, попробуйте ещё раз.",
+    "Спросите позже.",
+    "Лучше не говорить сейчас.",
+    "Сейчас предсказать нельзя.",
+    "Сконцентрируйтесь и спросите снова.",
+    "Не рассчитывайте на это.",
+    "Мой ответ — нет.",
+    "Мои источники говорят «нет».",
+    "Перспективы не очень.",
+    "Очень сомнительно."
+    ],
+    "meme_parse_fail": "Не удалось разобрать URL мема. Пожалуйста, попробуйте снова.",
+    "meme_api_status": "Не удалось получить мем. API вернул статус: {status}",
+    "meme_client_error": "Произошла ошибка при попытке подключиться к API мемов. Пожалуйста, попробуйте позже.",
+    "unexpected_error": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже."
+    },
+    "language": {
+    "set_success": "Ваш язык установлен на {language}",
+    "current": "Ваш текущий язык — {language}",
+    "unsupported": "Неподдерживаемый код языка. Доступно: {available}",
+    "help": "Измените предпочитаемый язык",
+    "embed_title": "Настройки языка",
+    "current_field": "Текущий язык",
+    "available_field": "Доступные языки",
+    "show_all_hint": "Используйте параметр 'show_all', чтобы показать все {count} языков.",
+    "change_hint": "Укажите код, чтобы изменить язык.",
+    "names": {
+      "en": "Английский",
+      "es": "Испанский",
+      "fr": "Французский",
+      "de": "Немецкий",
+      "ru": "Русский",
+      "ja-JP": "Японский"
+    }
+  },
+    "utilities": {
+    "title": "Информация о {name}",
+    "description": "Информация о {name}",
+    "bot_latency": "Задержка бота",
+    "database_latency": "Задержка базы данных",
+    "offline": "офлайн",
+    "powered_by": "Работает на {name}"
+    }
+    }

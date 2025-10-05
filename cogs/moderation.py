@@ -5,6 +5,7 @@ import datetime
 import re
 import database
 import config
+import i18n
 
 class Moderation(commands.Cog):
     def __init__(self, client):
@@ -99,18 +100,18 @@ class Moderation(commands.Cog):
                 reason = duration
                 duration = None
             else:
-                await ctx.send("Invalid duration format. Use like 10m, 2h, 1d, 1:30")
+                await ctx.send(i18n.t(ctx.author.id, "errors.invalid_duration_format"))
                 return
         prev = await self._apply_lock(target, reason, ctx.author, expires_at)
         embed = discord.Embed(
-            title="Channel Locked",
+            title=i18n.t(ctx.author.id, "moderation.channel_locked"),
             color=discord.Color.from_str(config.config_data.colors.embeds)
         )
-        embed.add_field(name="Channel", value=target.mention, inline=True)
+        embed.add_field(name=i18n.t(ctx.author.id, "generic.channel"), value=target.mention, inline=True)
         if reason:
-            embed.add_field(name="Reason", value=reason, inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.reason"), value=reason, inline=True)
         if expires_at:
-            embed.add_field(name="Unlocks", value=f"<t:{int(expires_at.timestamp())}:R>", inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.unlocks"), value=f"<t:{int(expires_at.timestamp())}:R>", inline=True)
         await ctx.send(embed=embed)
 
     @commands.hybrid_command(name="unlock", description="Unlock the current channel and optionally state a reason")
@@ -121,17 +122,17 @@ class Moderation(commands.Cog):
         target = ctx.channel
         await self._apply_unlock(target, reason, ctx.author)
         embed = discord.Embed(
-            title="Channel Unlocked",
+            title=i18n.t(ctx.author.id, "moderation.channel_unlocked"),
             color=discord.Color.from_str(config.config_data.colors.embeds)
         )
-        embed.add_field(name="Channel", value=target.mention, inline=True)
+        embed.add_field(name=i18n.t(ctx.author.id, "generic.channel"), value=target.mention, inline=True)
         if reason:
-            embed.add_field(name="Reason", value=reason, inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.reason"), value=reason, inline=True)
         await ctx.send(embed=embed)
         try:
             note = discord.Embed(
-                title="Channel Unlocked",
-                description="This channel has been unlocked",
+                title=i18n.t(ctx.author.id, "moderation.channel_unlocked"),
+                description=i18n.t(ctx.author.id, "moderation.unlocked_note"),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
             await target.send(embed=note)
@@ -145,21 +146,21 @@ class Moderation(commands.Cog):
         if isinstance(error, MissingPermissions):
             missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
             embed = discord.Embed(
-                title="Missing Permissions",
+                title=i18n.t(ctx.author.id, "moderation.missing_permissions"),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="Required", value=", ".join(f"`{p}`" for p in required), inline=False)
-            embed.add_field(name="Missing", value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.required"), value=", ".join(f"`{p}`" for p in required), inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.missing"), value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
             await ctx.send(embed=embed)
             return
         if isinstance(error, BotMissingPermissions):
             missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
             embed = discord.Embed(
-                title="Bot Missing Permissions",
+                title=i18n.t(ctx.author.id, "moderation.bot_missing_permissions"),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="Required", value=", ".join(f"`{p}`" for p in required), inline=False)
-            embed.add_field(name="Missing", value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.required"), value=", ".join(f"`{p}`" for p in required), inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.missing"), value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
             await ctx.send(embed=embed)
             return
         raise error
@@ -171,21 +172,21 @@ class Moderation(commands.Cog):
         if isinstance(error, MissingPermissions):
             missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
             embed = discord.Embed(
-                title="Missing Permissions",
+                title=i18n.t(ctx.author.id, "moderation.missing_permissions"),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="Required", value=", ".join(f"`{p}`" for p in required), inline=False)
-            embed.add_field(name="Missing", value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.required"), value=", ".join(f"`{p}`" for p in required), inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.missing"), value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
             await ctx.send(embed=embed)
             return
         if isinstance(error, BotMissingPermissions):
             missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
             embed = discord.Embed(
-                title="Bot Missing Permissions",
+                title=i18n.t(ctx.author.id, "moderation.bot_missing_permissions"),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="Required", value=", ".join(f"`{p}`" for p in required), inline=False)
-            embed.add_field(name="Missing", value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.required"), value=", ".join(f"`{p}`" for p in required), inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.missing"), value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
             await ctx.send(embed=embed)
             return
         raise error
@@ -223,8 +224,8 @@ class Moderation(commands.Cog):
                 })
                 try:
                     note = discord.Embed(
-                        title="Channel Unlocked",
-                        description="This channel has been automatically unlocked",
+                        title=i18n.t(None, "moderation.channel_unlocked"),
+                        description=i18n.t(None, "moderation.auto_unlocked_note"),
                         color=discord.Color.from_str(config.config_data.colors.embeds)
                     )
                     await channel.send(embed=note)

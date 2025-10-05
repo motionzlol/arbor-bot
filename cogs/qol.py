@@ -6,6 +6,7 @@ import asyncio
 import re
 import config
 import database
+import i18n
 from PIL import Image, ImageDraw, ImageFont
 import io
 
@@ -75,14 +76,14 @@ class QoL(commands.Cog):
         reminder_time = self.parse_time(when, ctx.author)
 
         if not reminder_time:
-            await ctx.send(f"Invalid time format. Use formats like: 1h30m, 2d, 14:30, 25/12/2024 15:00")
+            await ctx.send(i18n.t(ctx.author.id, "errors.invalid_time_format"))
             return
 
         if isinstance(reminder_time, datetime.timedelta):
             reminder_time = datetime.datetime.now(datetime.timezone.utc) + reminder_time
 
         if reminder_time <= datetime.datetime.now(datetime.timezone.utc):
-            await ctx.send("Reminder time must be in the future")
+            await ctx.send(i18n.t(ctx.author.id, "errors.time_must_be_future"))
             return
 
         try:
@@ -106,20 +107,20 @@ class QoL(commands.Cog):
             minutes, seconds = divmod(remainder, 60)
 
             embed = discord.Embed(
-                title="Reminder Set",
-                description=f"I'll remind you: **{what}**",
+                title=i18n.t(ctx.author.id, "reminders.set_title"),
+                description=i18n.t(ctx.author.id, "reminders.set_description", what=what),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="When", value=f"<t:{int(reminder_time.timestamp())}:R>", inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.when"), value=f"<t:{int(reminder_time.timestamp())}:R>", inline=True)
             pretty_remaining = (
                 f"{hours}h {minutes}m {seconds}s" if hours else (f"{minutes}m {seconds}s" if minutes else f"{seconds}s")
             )
-            embed.add_field(name="Time Remaining", value=pretty_remaining, inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.time_remaining"), value=pretty_remaining, inline=True)
 
             await ctx.send(embed=embed)
 
         except Exception as e:
-            await ctx.send(f"Failed to set reminder: {str(e)}")
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_set_reminder", error=str(e)))
 
 
     @commands.hybrid_command(name="schedule", description="Create a scheduled event")
@@ -127,14 +128,14 @@ class QoL(commands.Cog):
         schedule_time = self.parse_time(time, ctx.author)
 
         if not schedule_time:
-            await ctx.send("Invalid time format. Use formats like: 1h30m, 2d, 14:30, 25/12/2024 15:00")
+            await ctx.send(i18n.t(ctx.author.id, "errors.invalid_time_format"))
             return
 
         if isinstance(schedule_time, datetime.timedelta):
             schedule_time = datetime.datetime.now(datetime.timezone.utc) + schedule_time
 
         if schedule_time <= datetime.datetime.now(datetime.timezone.utc):
-            await ctx.send("Schedule time must be in the future")
+            await ctx.send(i18n.t(ctx.author.id, "errors.schedule_time_must_be_future"))
             return
 
         target_channel = channel or ctx.channel
@@ -158,13 +159,13 @@ class QoL(commands.Cog):
             minutes, seconds = divmod(remainder, 60)
 
             embed = discord.Embed(
-                title="Scheduled Event",
-                description=f"**{title}**",
+                title=i18n.t(ctx.author.id, "schedules.scheduled_title"),
+                description=i18n.t(ctx.author.id, "schedules.scheduled_description", title=title),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="Channel", value=target_channel.mention, inline=True)
-            embed.add_field(name="When", value=f"<t:{int(schedule_time.timestamp())}:R>", inline=True)
-            embed.add_field(name="Time Remaining", value=f"{hours}h {minutes}m", inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.channel"), value=target_channel.mention, inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.when"), value=f"<t:{int(schedule_time.timestamp())}:R>", inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.time_remaining"), value=f"{hours}h {minutes}m", inline=True)
 
             await ctx.send(embed=embed)
 
@@ -173,7 +174,7 @@ class QoL(commands.Cog):
             self.schedule_tasks[task_id] = task
 
         except Exception as e:
-            await ctx.send(f"Failed to create schedule: {str(e)}")
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_create_schedule", error=str(e)))
 
     async def send_schedule(self, task_id, channel_id, title, schedule_time):
         await asyncio.sleep((schedule_time - datetime.datetime.now(datetime.timezone.utc)).total_seconds())
@@ -182,8 +183,8 @@ class QoL(commands.Cog):
             channel = self.client.get_channel(channel_id)
             if channel:
                 embed = discord.Embed(
-                    title="Scheduled Event",
-                    description=f"**{title}** is starting now!",
+                    title=i18n.t(None, "schedules.scheduled_title"),
+                    description=i18n.t(None, "schedules.starting_now", title=title),
                     color=discord.Color.from_str(config.config_data.colors.embeds)
                 )
                 await channel.send("@everyone", embed=embed)
@@ -198,7 +199,7 @@ class QoL(commands.Cog):
         target_user = user or ctx.author
 
         embed = discord.Embed(
-            title=f"{target_user.display_name}'s Avatar",
+            title=i18n.t(ctx.author.id, "avatar.title", name=target_user.display_name),
             color=discord.Color.from_str(config.config_data.colors.embeds)
         )
         embed.set_image(url=target_user.display_avatar.url)
@@ -257,11 +258,11 @@ class QoL(commands.Cog):
         color_image = self.create_color_image(hex_code)
 
         if not color_image:
-            await ctx.send("Invalid color format. Use hex code like #FF5733 or RGB values like '255 87 51'")
+            await ctx.send(i18n.t(ctx.author.id, "errors.invalid_color_format"))
             return
 
         embed = discord.Embed(
-            title="Color Swatch",
+            title=i18n.t(ctx.author.id, "color.title"),
             color=discord.Color.from_str(config.config_data.colors.embeds)
         )
         embed.set_image(url="attachment://color.png")
@@ -278,43 +279,53 @@ class QoL(commands.Cog):
                 first = m
                 break
             if not first:
-                await ctx.send("No messages found in that channel.")
+                await ctx.send(i18n.t(ctx.author.id, "errors.no_messages_found"))
                 return
             embed = discord.Embed(
-                title="First Message",
-                description=f"[Jump to message]({first.jump_url})",
+                title=i18n.t(ctx.author.id, "firstmessage.title"),
+                description=f"[{i18n.t(ctx.author.id, 'firstmessage.jump')}]({first.jump_url})",
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
-            embed.add_field(name="Author", value=first.author.mention, inline=True)
+            embed.add_field(name=i18n.t(ctx.author.id, "firstmessage.author"), value=first.author.mention, inline=True)
             embed.timestamp = first.created_at
             await ctx.send(embed=embed)
         except discord.Forbidden:
-            await ctx.send("I don't have permission to view that channel's history.")
+            await ctx.send(i18n.t(ctx.author.id, "errors.no_permission_history"))
         except Exception as e:
-            await ctx.send(f"Failed to fetch first message: {str(e)}")
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_fetch_first_message", error=str(e)))
 
     @commands.hybrid_command(name="rep", description="Give a reputation point to a user")
     @app_commands.describe(user="The member you want to give a point to", reason="A short message explaining why")
     async def rep(self, ctx, user: discord.Member, *, reason: str = None):
         if user.id == ctx.author.id or user.bot:
-            await ctx.send("You cannot give reputation to that user")
+            await ctx.send(i18n.t(ctx.author.id, "errors.cannot_give_rep"))
             return
         db = database.get_database()
         cooldowns = db.rep_cooldowns
         reputation = db.reputation
         now = datetime.datetime.now(datetime.timezone.utc)
         cd = cooldowns.find_one({"giver_id": ctx.author.id})
-        if cd and (now - cd.get("last_given_at", now)).total_seconds() < 86400:
-            remaining = 86400 - int((now - cd["last_given_at"]).total_seconds())
+        if cd:
+            last = cd.get("last_given_at", None)
+            if isinstance(last, datetime.datetime):
+                if last.tzinfo is None:
+                    last = last.replace(tzinfo=datetime.timezone.utc)
+                elapsed = (now - last).total_seconds()
+            else:
+                elapsed = float("inf")
+        else:
+            elapsed = float("inf")
+        if elapsed < 86400:
+            remaining = 86400 - int(elapsed)
             hours, rem = divmod(remaining, 3600)
             minutes, _ = divmod(rem, 60)
-            await ctx.send(f"You can give reputation again in {hours}h {minutes}m")
+            await ctx.send(i18n.t(ctx.author.id, "errors.rep_cooldown", hours=hours, minutes=minutes))
             return
         reputation.update_one({"user_id": user.id}, {"$inc": {"total": 1}}, upsert=True)
         cooldowns.update_one({"giver_id": ctx.author.id}, {"$set": {"last_given_at": now}}, upsert=True)
         embed = discord.Embed(
-            title="Reputation Given",
-            description=f"{ctx.author.mention} gave a reputation point to {user.mention}" + (f" for: {reason}" if reason else ""),
+            title=i18n.t(ctx.author.id, "rep.given_title"),
+            description=i18n.t(ctx.author.id, "rep.given_description", giver=ctx.author.mention, user=user.mention, reason_suffix=(f" for: {reason}" if reason else "")),
             color=discord.Color.from_str(config.config_data.colors.embeds)
         )
         await ctx.send(embed=embed)
@@ -344,68 +355,68 @@ class QoL(commands.Cog):
         )
         embed.set_thumbnail(url=user.display_avatar.url)
         embed.add_field(
-            name=f'{config.config_data.emojis.info} Basic Information',
+            name=f"{config.config_data.emojis.info} {i18n.t(ctx.author.id, 'userinfo.basic_information')}",
             value=(
-                f'**Username:** `{user.name}`\n'
-                f'**ID:** `{user.id}`\n'
-                f'**Reputation:** `{rep_total}`\n'
-                f'**Account Age:** `{created_days} days`\n'
-                f'**Created:** <t:{int(user.created_at.timestamp())}:R>'
+                f"**{i18n.t(ctx.author.id, 'userinfo.username')}:** `{user.name}`\n"
+                f"**{i18n.t(ctx.author.id, 'userinfo.id')}:** `{user.id}`\n"
+                f"**{i18n.t(ctx.author.id, 'userinfo.reputation')}:** `{rep_total}`\n"
+                f"**{i18n.t(ctx.author.id, 'userinfo.account_age')}:** `{i18n.t(ctx.author.id, 'userinfo.days', days=created_days)}`\n"
+                f"**{i18n.t(ctx.author.id, 'userinfo.created')}:** <t:{int(user.created_at.timestamp())}:R>"
             ),
             inline=False
         )
         if hasattr(user, 'joined_at'):
             embed.add_field(
-                name=f'{config.config_data.emojis.home} Server Information',
+                name=f"{config.config_data.emojis.home} {i18n.t(ctx.author.id, 'userinfo.server_information')}",
                 value=(
-                    f'**Nickname:** `{user.nick or user.display_name}`\n'
-                    f'**Joined:** <t:{int(user.joined_at.timestamp())}:R>\n'
-                    f'**Server Age:** `{joined_days} days`\n'
-                    f'**Top Roles:** {", ".join(role.mention for role in top_roles) if top_roles else "None"}'
+                    f"**{i18n.t(ctx.author.id, 'userinfo.nickname')}:** `{user.nick or user.display_name}`\n"
+                    f"**{i18n.t(ctx.author.id, 'userinfo.joined')}:** <t:{int(user.joined_at.timestamp())}:R>\n"
+                    f"**{i18n.t(ctx.author.id, 'userinfo.server_age')}:** `{i18n.t(ctx.author.id, 'userinfo.days', days=joined_days)}`\n"
+                    f"**{i18n.t(ctx.author.id, 'userinfo.top_roles')}:** {', '.join(role.mention for role in top_roles) if top_roles else i18n.t(ctx.author.id, 'generic.none')}"
                 ),
                 inline=False
             )
         status_text = {
-            discord.Status.online: 'Online',
-            discord.Status.idle: 'Idle', 
-            discord.Status.dnd: 'Do Not Disturb',
-            discord.Status.offline: 'Offline'
-        }.get(user.status, 'Unknown')
-        activity_text = 'No activity'
+            discord.Status.online: i18n.t(ctx.author.id, 'userinfo.statuses.online'),
+            discord.Status.idle: i18n.t(ctx.author.id, 'userinfo.statuses.idle'), 
+            discord.Status.dnd: i18n.t(ctx.author.id, 'userinfo.statuses.dnd'),
+            discord.Status.offline: i18n.t(ctx.author.id, 'userinfo.statuses.offline')
+        }.get(user.status, i18n.t(ctx.author.id, 'userinfo.statuses.unknown'))
+        activity_text = i18n.t(ctx.author.id, 'userinfo.activities.none')
         if user.activity:
             if isinstance(user.activity, discord.Game):
-                activity_text = f'Playing {user.activity.name}'
+                activity_text = i18n.t(ctx.author.id, 'userinfo.activities.playing', name=user.activity.name)
             elif isinstance(user.activity, discord.Streaming):
-                activity_text = f'Streaming {user.activity.name}'
+                activity_text = i18n.t(ctx.author.id, 'userinfo.activities.streaming', name=user.activity.name)
             elif isinstance(user.activity, discord.CustomActivity):
-                activity_text = user.activity.name or 'Custom Status'
+                activity_text = user.activity.name or i18n.t(ctx.author.id, 'userinfo.activities.custom')
         embed.add_field(
-            name=f'{config.config_data.emojis.info} Status & Activity',
+            name=f"{config.config_data.emojis.info} {i18n.t(ctx.author.id, 'userinfo.status_activity')}",
             value=(
-                f'**Status:** {status_text}\n'
-                f'**Activity:** {activity_text}'
+                f"**{i18n.t(ctx.author.id, 'userinfo.status')}:** {status_text}\n"
+                f"**{i18n.t(ctx.author.id, 'userinfo.activity')}:** {activity_text}"
             ),
             inline=True
         )
         key_perms = []
         if user.guild_permissions.administrator:
-            key_perms.append(f'{config.config_data.emojis.moderation} Administrator')
+            key_perms.append(f"{config.config_data.emojis.moderation} {i18n.t(ctx.author.id, 'userinfo.perms.administrator')}")
         if user.guild_permissions.manage_guild:
-            key_perms.append(f'{config.config_data.emojis.edit} Manage Server')
+            key_perms.append(f"{config.config_data.emojis.edit} {i18n.t(ctx.author.id, 'userinfo.perms.manage_server')}")
         if user.guild_permissions.manage_messages:
-            key_perms.append(f'{config.config_data.emojis.delete} Manage Messages')
+            key_perms.append(f"{config.config_data.emojis.delete} {i18n.t(ctx.author.id, 'userinfo.perms.manage_messages')}")
         if user.guild_permissions.kick_members:
-            key_perms.append(f'{config.config_data.emojis.warning} Kick Members')
+            key_perms.append(f"{config.config_data.emojis.warning} {i18n.t(ctx.author.id, 'userinfo.perms.kick_members')}")
         if user.guild_permissions.ban_members:
-            key_perms.append(f'{config.config_data.emojis.error} Ban Members')
+            key_perms.append(f"{config.config_data.emojis.error} {i18n.t(ctx.author.id, 'userinfo.perms.ban_members')}")
         if key_perms:
             embed.add_field(
-                name=f'{config.config_data.emojis.tick} Key Permissions',
+                name=f"{config.config_data.emojis.tick} {i18n.t(ctx.author.id, 'userinfo.key_permissions')}",
                 value='\n'.join(key_perms),
                 inline=True
             )
         embed.set_footer(
-            text=f'Requested by {ctx.author.display_name}',
+            text=i18n.t(ctx.author.id, 'generic.requested_by', name=ctx.author.display_name),
             icon_url=ctx.author.display_avatar.url
         )
         await ctx.send(embed=embed)
@@ -430,13 +441,13 @@ class QoL(commands.Cog):
                 upsert=True
             )
             embed = discord.Embed(
-                title="AFK Status Set",
-                description=f"I'll let others know you're AFK: **{message}**",
+                title=i18n.t(ctx.author.id, "afk.set_title"),
+                description=i18n.t(ctx.author.id, "afk.set_description", message=message),
                 color=discord.Color.from_str(config.config_data.colors.embeds)
             )
             await ctx.send(embed=embed)
         except Exception as e:
-            await ctx.send(f"Failed to set AFK status: {str(e)}")
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_set_afk", error=str(e)))
 
     @afk.command(name="clear", description="Clear your AFK status")
     async def afk_clear(self, ctx):
@@ -447,20 +458,20 @@ class QoL(commands.Cog):
 
             if result.deleted_count > 0:
                 embed = discord.Embed(
-                    title="AFK Status Cleared",
-                    description="Welcome back!",
+                    title=i18n.t(ctx.author.id, "afk.cleared_title"),
+                    description=i18n.t(ctx.author.id, "afk.cleared_description"),
                     color=discord.Color.from_str(config.config_data.colors.embeds)
                 )
                 await ctx.send(embed=embed)
             else:
                 embed = discord.Embed(
-                    title="No AFK Status",
-                    description="You weren't AFK to begin with!",
+                    title=i18n.t(ctx.author.id, "afk.none_title"),
+                    description=i18n.t(ctx.author.id, "afk.none_description"),
                     color=discord.Color.from_str(config.config_data.colors.embeds)
                 )
                 await ctx.send(embed=embed)
         except Exception as e:
-            await ctx.send(f"Failed to clear AFK status: {str(e)}")
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_clear_afk", error=str(e)))
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -478,8 +489,8 @@ class QoL(commands.Cog):
             if author_afk:
                 duration = self._get_afk_duration(author_afk["set_at"])
                 embed = discord.Embed(
-                    title="AFK Status Cleared",
-                    description=f"Welcome back! You were AFK for {duration}",
+                    title=i18n.t(message.author.id, "afk.cleared_title"),
+                    description=i18n.t(message.author.id, "afk.cleared_back", duration=duration),
                     color=discord.Color.from_str(config.config_data.colors.embeds)
                 )
                 await message.channel.send(embed=embed, delete_after=10)
@@ -498,11 +509,11 @@ class QoL(commands.Cog):
                 if mentioned_afk:
                     duration = self._get_afk_duration(mentioned_afk["set_at"])
                     embed = discord.Embed(
-                        title=f"{user.display_name} is AFK",
+                        title=i18n.t(message.author.id, "afk.user_is_afk_title", name=user.display_name),
                         description=f"**{mentioned_afk['message']}**",
                         color=discord.Color.from_str(config.config_data.colors.embeds)
                     )
-                    embed.set_footer(text=f"AFK for {duration}")
+                    embed.set_footer(text=i18n.t(message.author.id, "afk.footer_afk_for", duration=duration))
                     await message.channel.send(embed=embed)
         except Exception as e:
             print(f"Error in AFK on_message listener: {e}")
@@ -524,12 +535,12 @@ class QoL(commands.Cog):
                 if channel:
                     user = self.client.get_user(reminder["user_id"])
                     embed = discord.Embed(
-                        title="Reminder",
-                        description=f"**{reminder['message']}**",
+                        title=i18n.t(reminder.get("user_id"), "reminders.reminder_title"),
+                        description=i18n.t(reminder.get("user_id"), "reminders.reminder_description", message=reminder['message']),
                         color=discord.Color.from_str(config.config_data.colors.embeds)
                     )
                     if user:
-                        embed.set_footer(text=f"Reminder for {user.display_name}")
+                        embed.set_footer(text=i18n.t(reminder.get("user_id"), "reminders.footer_for", name=user.display_name))
                     await channel.send(f"<@{reminder['user_id']}>", embed=embed)
             except Exception as e:
                 print(f"Failed to send reminder: {e}")
@@ -551,8 +562,8 @@ class QoL(commands.Cog):
                 channel = self.client.get_channel(schedule["channel_id"])
                 if channel:
                     embed = discord.Embed(
-                        title="Scheduled Event",
-                        description=f"**{schedule['title']}** is starting now!",
+                        title=i18n.t(schedule.get("user_id"), "schedules.scheduled_title"),
+                        description=i18n.t(schedule.get("user_id"), "schedules.starting_now", title=schedule['title']),
                         color=discord.Color.from_str(config.config_data.colors.embeds)
                     )
                     await channel.send("@everyone", embed=embed)

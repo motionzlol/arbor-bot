@@ -3,6 +3,7 @@ from discord.ext import commands
 import os
 from dotenv import load_dotenv
 import config
+import i18n
 
 load_dotenv()
 
@@ -18,6 +19,7 @@ if token:
     
     @client.event
     async def on_ready():
+        i18n.load_locales()
         await load_cogs()
         try:
             synced = await client.tree.sync()

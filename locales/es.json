@@ -1,0 +1,173 @@
+{
+  "generic": {
+    "when": "Cuándo",
+    "channel": "Canal",
+    "reason": "Razón",
+    "unlocks": "Desbloquea",
+    "time_remaining": "Tiempo restante",
+    "requested_by": "Solicitado por {name}",
+    "required": "Requerido",
+    "missing": "Faltante",
+    "none": "Ninguno"
+  },
+  "errors": {
+    "invalid_time_format": "Formato de tiempo inválido. Usa formatos como: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "La hora del recordatorio debe ser en el futuro",
+    "schedule_time_must_be_future": "La hora del evento debe ser en el futuro",
+    "failed_set_reminder": "No se pudo crear el recordatorio: {error}",
+    "failed_create_schedule": "No se pudo crear el evento: {error}",
+    "no_messages_found": "No se encontraron mensajes en ese canal.",
+    "no_permission_history": "No tengo permiso para ver el historial de ese canal.",
+    "failed_fetch_first_message": "No se pudo obtener el primer mensaje: {error}",
+    "invalid_color_format": "Formato de color inválido. Usa un código hex como #FF5733 o valores RGB como '255 87 51'",
+    "cannot_give_rep": "No puedes dar reputación a ese usuario",
+    "rep_cooldown": "Podrás dar reputación de nuevo en {hours}h {minutes}m",
+    "failed_set_afk": "No se pudo establecer el estado AFK: {error}",
+    "failed_clear_afk": "No se pudo borrar el estado AFK: {error}",
+    "invalid_duration_format": "Formato de duración inválido. Usa 10m, 2h, 1d, 1:30"
+  },
+  "reminders": {
+    "set_title": "Recordatorio creado",
+    "set_description": "Te recordaré: **{what}**",
+    "reminder_title": "Recordatorio",
+    "reminder_description": "**{message}**",
+    "footer_for": "Recordatorio para {name}"
+  },
+  "schedules": {
+    "scheduled_title": "Evento programado",
+    "scheduled_description": "**{title}**",
+    "starting_now": "**{title}** está comenzando ahora!"
+  },
+  "avatar": {
+    "title": "Avatar de {name}"
+  },
+  "color": {
+    "title": "Muestra de color"
+  },
+  "firstmessage": {
+    "title": "Primer mensaje",
+    "jump": "Ir al mensaje",
+    "author": "Autor"
+  },
+  "rep": {
+    "given_title": "Reputación otorgada",
+    "given_description": "{giver} ha dado un punto de reputación a {user}{reason_suffix}"
+  },
+  "userinfo": {
+    "basic_information": "Información básica",
+    "username": "Usuario",
+    "id": "ID",
+    "reputation": "Reputación",
+    "account_age": "Antigüedad de la cuenta",
+    "created": "Creada",
+    "server_information": "Información del servidor",
+    "nickname": "Apodo",
+    "joined": "Se unió",
+    "server_age": "Antigüedad en el servidor",
+    "top_roles": "Roles principales",
+    "status_activity": "Estado y actividad",
+    "status": "Estado",
+    "activity": "Actividad",
+    "days": "{days} días",
+    "statuses": {
+      "online": "En línea",
+      "idle": "Ausente",
+      "dnd": "No molestar",
+      "offline": "Desconectado",
+      "unknown": "Desconocido"
+    },
+    "activities": {
+      "none": "Sin actividad",
+      "playing": "Jugando {name}",
+      "streaming": "Transmitiendo {name}",
+      "custom": "Estado personalizado"
+    },
+    "key_permissions": "Permisos claves",
+    "perms": {
+      "administrator": "Administrador",
+      "manage_server": "Gestionar servidor",
+      "manage_messages": "Gestionar mensajes",
+      "kick_members": "Expulsar miembros",
+      "ban_members": "Banear miembros"
+    }
+  },
+  "afk": {
+    "set_title": "Estado AFK establecido",
+    "set_description": "Avisaré a otros que estás AFK: **{message}**",
+    "cleared_title": "Estado AFK borrado",
+    "cleared_description": "¡Bienvenido de vuelta!",
+    "none_title": "Sin estado AFK",
+    "none_description": "¡No estabas en AFK!",
+    "cleared_back": "¡Bienvenido de vuelta! Estuviste AFK durante {duration}",
+    "user_is_afk_title": "{name} está AFK",
+    "footer_afk_for": "AFK durante {duration}"
+  },
+  "moderation": {
+    "channel_locked": "Canal bloqueado",
+    "channel_unlocked": "Canal desbloqueado",
+    "unlocked_note": "Este canal ha sido desbloqueado",
+    "auto_unlocked_note": "Este canal ha sido desbloqueado automáticamente",
+    "missing_permissions": "Faltan permisos",
+    "bot_missing_permissions": "Faltan permisos del bot"
+  },
+  "fun": {
+    "coinflip_result": "**Resultado de la moneda:** {result}!",
+    "coin_heads": "Cara",
+    "coin_tails": "Cruz",
+    "dice_result": "**Resultado del dado:** {result}",
+    "8ball_format": "**Pregunta:** {question}\n**Respuesta:** {answer}",
+    "8ball_responses": [
+      "Es seguro.",
+      "Definitivamente sí.",
+      "Sin lugar a dudas.",
+      "Sí, definitivamente.",
+      "Puedes confiar en ello.",
+      "Según veo, sí.",
+      "Lo más probable.",
+      "El panorama es bueno.",
+      "Sí.",
+      "Las señales apuntan a que sí.",
+      "Respuesta confusa, inténtalo de nuevo.",
+      "Pregunta de nuevo más tarde.",
+      "Mejor no decirte ahora.",
+      "No puedo predecir ahora.",
+      "Concéntrate y vuelve a preguntar.",
+      "No cuentes con ello.",
+      "Mi respuesta es no.",
+      "Mis fuentes dicen que no.",
+      "El panorama no es muy bueno.",
+      "Muy dudoso."
+    ],
+    "meme_parse_fail": "No se pudo obtener la URL del meme. Intenta de nuevo.",
+    "meme_api_status": "No se pudo obtener un meme. La API devolvió: {status}",
+    "meme_client_error": "Ocurrió un error al conectar con la API de memes. Inténtalo más tarde.",
+    "unexpected_error": "Ocurrió un error inesperado. Inténtalo más tarde."
+  },
+  "language": {
+    "set_success": "Tu idioma se ha establecido a {language}",
+    "current": "Tu idioma actual es {language}",
+    "unsupported": "Código de idioma no soportado. Disponibles: {available}",
+    "help": "Cambia tu preferencia de idioma",
+    "embed_title": "Configuración de idioma",
+    "current_field": "Idioma actual",
+    "available_field": "Idiomas disponibles",
+    "show_all_hint": "Usa la opción 'show_all' para listar los {count} idiomas.",
+    "change_hint": "Proporciona un código para cambiar tu idioma.",
+    "names": {
+      "en": "Inglés",
+      "es": "Español",
+      "fr": "Francés",
+      "de": "Alemán",
+      "ru": "Ruso",
+      "ja-JP": "Japonés"
+    }
+  },
+  "utilities": {
+    "title": "Información de {name}",
+    "description": "Información de {name}",
+    "bot_latency": "Latencia del bot",
+    "database_latency": "Latencia de la base de datos",
+    "offline": "Desconectado",
+    "powered_by": "Impulsado por {name}"
+  }
+}

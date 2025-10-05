@@ -1,0 +1,173 @@
+{
+  "generic": {
+    "when": "Wann",
+    "channel": "Kanal",
+    "reason": "Grund",
+    "unlocks": "Entsperrt",
+    "time_remaining": "Verbleibende Zeit",
+    "requested_by": "Angefordert von {name}",
+    "required": "Erforderlich",
+    "missing": "Fehlt",
+    "none": "Keine"
+  },
+  "errors": {
+    "invalid_time_format": "Ungültiges Zeitformat. Verwende Formate wie: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "Erinnerungszeit muss in der Zukunft liegen",
+    "schedule_time_must_be_future": "Planungszeit muss in der Zukunft liegen",
+    "failed_set_reminder": "Erinnerung konnte nicht gesetzt werden: {error}",
+    "failed_create_schedule": "Termin konnte nicht erstellt werden: {error}",
+    "no_messages_found": "Keine Nachrichten in diesem Kanal gefunden.",
+    "no_permission_history": "Ich habe keine Berechtigung, den Verlauf dieses Kanals anzusehen.",
+    "failed_fetch_first_message": "Erste Nachricht konnte nicht abgerufen werden: {error}",
+    "invalid_color_format": "Ungültiges Farbformat. Verwende einen Hex-Code wie #FF5733 oder RGB-Werte wie '255 87 51'",
+    "cannot_give_rep": "Du kannst diesem Nutzer keinen Ruf geben",
+    "rep_cooldown": "Du kannst in {hours}h {minutes}m wieder Ruf vergeben",
+    "failed_set_afk": "AFK-Status konnte nicht gesetzt werden: {error}",
+    "failed_clear_afk": "AFK-Status konnte nicht entfernt werden: {error}",
+    "invalid_duration_format": "Ungültiges Dauerformat. Verwende z. B. 10m, 2h, 1d, 1:30"
+  },
+  "reminders": {
+    "set_title": "Erinnerung gesetzt",
+    "set_description": "Ich erinnere dich an: **{what}**",
+    "reminder_title": "Erinnerung",
+    "reminder_description": "**{message}**",
+    "footer_for": "Erinnerung für {name}"
+  },
+  "schedules": {
+    "scheduled_title": "Geplanter Termin",
+    "scheduled_description": "**{title}**",
+    "starting_now": "**{title}** beginnt jetzt!"
+  },
+  "avatar": {
+    "title": "Avatar von {name}"
+  },
+  "color": {
+    "title": "Farbfeld"
+  },
+  "firstmessage": {
+    "title": "Erste Nachricht",
+    "jump": "Zur Nachricht springen",
+    "author": "Autor"
+  },
+  "rep": {
+    "given_title": "Ruf vergeben",
+    "given_description": "{giver} hat {user} einen Rufpunkt gegeben{reason_suffix}"
+  },
+  "userinfo": {
+    "basic_information": "Grundinformationen",
+    "username": "Benutzername",
+    "id": "ID",
+    "reputation": "Ruf",
+    "account_age": "Account-Alter",
+    "created": "Erstellt",
+    "server_information": "Serverinformationen",
+    "nickname": "Spitzname",
+    "joined": "Beigetreten",
+    "server_age": "Serveralter",
+    "top_roles": "Top‑Rollen",
+    "status_activity": "Status & Aktivität",
+    "status": "Status",
+    "activity": "Aktivität",
+    "days": "{days} Tage",
+    "statuses": {
+      "online": "Online",
+      "idle": "Abwesend",
+      "dnd": "Bitte nicht stören",
+      "offline": "Offline",
+      "unknown": "Unbekannt"
+    },
+    "activities": {
+      "none": "Keine Aktivität",
+      "playing": "Spielt {name}",
+      "streaming": "Streamt {name}",
+      "custom": "Benutzerdefinierter Status"
+    },
+    "key_permissions": "Wichtige Berechtigungen",
+    "perms": {
+      "administrator": "Administrator",
+      "manage_server": "Server verwalten",
+      "manage_messages": "Nachrichten verwalten",
+      "kick_members": "Mitglieder kicken",
+      "ban_members": "Mitglieder bannen"
+    }
+  },
+  "afk": {
+    "set_title": "AFK-Status gesetzt",
+    "set_description": "Ich lasse andere wissen, dass du AFK bist: **{message}**",
+    "cleared_title": "AFK-Status entfernt",
+    "cleared_description": "Willkommen zurück!",
+    "none_title": "Kein AFK-Status",
+    "none_description": "Du warst nicht AFK!",
+    "cleared_back": "Willkommen zurück! Du warst {duration} AFK",
+    "user_is_afk_title": "{name} ist AFK",
+    "footer_afk_for": "AFK seit {duration}"
+  },
+  "moderation": {
+    "channel_locked": "Kanal gesperrt",
+    "channel_unlocked": "Kanal entsperrt",
+    "unlocked_note": "Dieser Kanal wurde entsperrt",
+    "auto_unlocked_note": "Dieser Kanal wurde automatisch entsperrt",
+    "missing_permissions": "Fehlende Berechtigungen",
+    "bot_missing_permissions": "Bot: Fehlende Berechtigungen"
+  },
+  "fun": {
+    "coinflip_result": "**Münzwurf-Ergebnis:** {result}!",
+    "coin_heads": "Kopf",
+    "coin_tails": "Zahl",
+    "dice_result": "**Würfel-Ergebnis:** {result}",
+    "8ball_format": "**Frage:** {question}\\n**Antwort:** {answer}",
+    "8ball_responses": [
+      "Es ist sicher.",
+      "Es ist entschieden so.",
+      "Ohne Zweifel.",
+      "Ja – definitiv.",
+      "Darauf kannst du dich verlassen.",
+      "So wie ich es sehe, ja.",
+      "Höchstwahrscheinlich.",
+      "Aussichten gut.",
+      "Ja.",
+      "Die Zeichen deuten auf Ja.",
+      "Antwort unklar, versuche es erneut.",
+      "Frag später noch einmal.",
+      "Besser, ich sage es dir jetzt nicht.",
+      "Kann es jetzt nicht vorhersagen.",
+      "Konzentriere dich und frag noch einmal.",
+      "Verlass dich nicht darauf.",
+      "Meine Antwort ist nein.",
+      "Meine Quellen sagen nein.",
+      "Aussichten nicht so gut.",
+      "Sehr zweifelhaft."
+    ],
+    "meme_parse_fail": "Die Meme-URL konnte nicht erkannt werden. Bitte versuche es erneut.",
+    "meme_api_status": "Konnte kein Meme abrufen. API meldete Status: {status}",
+    "meme_client_error": "Beim Verbinden mit der Meme-API ist ein Fehler aufgetreten. Bitte versuche es später erneut.",
+    "unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es später erneut."
+  },
+  "language": {
+    "set_success": "Deine Sprache wurde auf {language} gesetzt",
+    "current": "Deine aktuelle Sprache ist {language}",
+    "unsupported": "Nicht unterstützter Sprachcode. Verfügbar: {available}",
+    "help": "Ändere deine Spracheinstellung",
+    "embed_title": "Spracheinstellungen",
+    "current_field": "Aktuelle Sprache",
+    "available_field": "Verfügbare Sprachen",
+    "show_all_hint": "Nutze die Option 'show_all', um alle {count} Sprachen aufzulisten.",
+    "change_hint": "Gib einen Code an, um deine Sprache zu ändern.",
+    "names": {
+      "en": "Englisch",
+      "es": "Spanisch",
+      "fr": "Französisch",
+      "de": "Deutsch",
+      "ru": "Russisch",
+      "ja-JP": "Japanisch"
+    }
+  },
+  "utilities": {
+    "title": "Informationen zu {name}",
+    "description": "{name}-Informationen",
+    "bot_latency": "Bot-Latenz",
+    "database_latency": "Datenbank-Latenz",
+    "offline": "Offline",
+    "powered_by": "Bereitgestellt von {name}"
+  }
+}

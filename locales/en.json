@@ -1,0 +1,173 @@
+{
+  "generic": {
+    "when": "When",
+    "channel": "Channel",
+    "reason": "Reason",
+    "unlocks": "Unlocks",
+    "time_remaining": "Time Remaining",
+    "requested_by": "Requested by {name}",
+    "required": "Required",
+    "missing": "Missing",
+    "none": "None"
+  },
+  "errors": {
+    "invalid_time_format": "Invalid time format. Use formats like: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "Reminder time must be in the future",
+    "schedule_time_must_be_future": "Schedule time must be in the future",
+    "failed_set_reminder": "Failed to set reminder: {error}",
+    "failed_create_schedule": "Failed to create schedule: {error}",
+    "no_messages_found": "No messages found in that channel.",
+    "no_permission_history": "I don't have permission to view that channel's history.",
+    "failed_fetch_first_message": "Failed to fetch first message: {error}",
+    "invalid_color_format": "Invalid color format. Use hex code like #FF5733 or RGB values like '255 87 51'",
+    "cannot_give_rep": "You cannot give reputation to that user",
+    "rep_cooldown": "You can give reputation again in {hours}h {minutes}m",
+    "failed_set_afk": "Failed to set AFK status: {error}",
+    "failed_clear_afk": "Failed to clear AFK status: {error}",
+    "invalid_duration_format": "Invalid duration format. Use like 10m, 2h, 1d, 1:30"
+  },
+  "reminders": {
+    "set_title": "Reminder Set",
+    "set_description": "I'll remind you: **{what}**",
+    "reminder_title": "Reminder",
+    "reminder_description": "**{message}**",
+    "footer_for": "Reminder for {name}"
+  },
+  "schedules": {
+    "scheduled_title": "Scheduled Event",
+    "scheduled_description": "**{title}**",
+    "starting_now": "**{title}** is starting now!"
+  },
+  "avatar": {
+    "title": "{name}'s Avatar"
+  },
+  "color": {
+    "title": "Color Swatch"
+  },
+  "firstmessage": {
+    "title": "First Message",
+    "jump": "Jump to message",
+    "author": "Author"
+  },
+  "rep": {
+    "given_title": "Reputation Given",
+    "given_description": "{giver} gave a reputation point to {user}{reason_suffix}"
+  },
+  "userinfo": {
+    "basic_information": "Basic Information",
+    "username": "Username",
+    "id": "ID",
+    "reputation": "Reputation",
+    "account_age": "Account Age",
+    "created": "Created",
+    "server_information": "Server Information",
+    "nickname": "Nickname",
+    "joined": "Joined",
+    "server_age": "Server Age",
+    "top_roles": "Top Roles",
+    "status_activity": "Status & Activity",
+    "status": "Status",
+    "activity": "Activity",
+    "days": "{days} days",
+    "statuses": {
+      "online": "Online",
+      "idle": "Idle",
+      "dnd": "Do Not Disturb",
+      "offline": "Offline",
+      "unknown": "Unknown"
+    },
+    "activities": {
+      "none": "No activity",
+      "playing": "Playing {name}",
+      "streaming": "Streaming {name}",
+      "custom": "Custom Status"
+    },
+    "key_permissions": "Key Permissions",
+    "perms": {
+      "administrator": "Administrator",
+      "manage_server": "Manage Server",
+      "manage_messages": "Manage Messages",
+      "kick_members": "Kick Members",
+      "ban_members": "Ban Members"
+    }
+  },
+  "afk": {
+    "set_title": "AFK Status Set",
+    "set_description": "I'll let others know you're AFK: **{message}**",
+    "cleared_title": "AFK Status Cleared",
+    "cleared_description": "Welcome back!",
+    "none_title": "No AFK Status",
+    "none_description": "You weren't AFK to begin with!",
+    "cleared_back": "Welcome back! You were AFK for {duration}",
+    "user_is_afk_title": "{name} is AFK",
+    "footer_afk_for": "AFK for {duration}"
+  },
+  "moderation": {
+    "channel_locked": "Channel Locked",
+    "channel_unlocked": "Channel Unlocked",
+    "unlocked_note": "This channel has been unlocked",
+    "auto_unlocked_note": "This channel has been automatically unlocked",
+    "missing_permissions": "Missing Permissions",
+    "bot_missing_permissions": "Bot Missing Permissions"
+  },
+  "fun": {
+    "coinflip_result": "**Coin flip result:** {result}!",
+    "coin_heads": "Heads",
+    "coin_tails": "Tails",
+    "dice_result": "**Dice roll result:** {result}",
+    "8ball_format": "**Question:** {question}\n**Answer:** {answer}",
+    "8ball_responses": [
+      "It is certain.",
+      "It is decidedly so.",
+      "Without a doubt.",
+      "Yes - definitely.",
+      "You may rely on it.",
+      "As I see it, yes.",
+      "Most likely.",
+      "Outlook good.",
+      "Yes.",
+      "Signs point to yes.",
+      "Reply hazy, try again.",
+      "Ask again later.",
+      "Better not tell you now.",
+      "Cannot predict now.",
+      "Concentrate and ask again.",
+      "Don't count on it.",
+      "My reply is no.",
+      "My sources say no.",
+      "Outlook not so good.",
+      "Very doubtful."
+    ],
+    "meme_parse_fail": "Could not parse the meme URL. Please try again.",
+    "meme_api_status": "Could not fetch a meme. API returned status: {status}",
+    "meme_client_error": "An error occurred while trying to connect to the meme API. Please try again later.",
+    "unexpected_error": "An unexpected error occurred. Please try again later."
+  },
+  "language": {
+    "set_success": "Your language has been set to {language}",
+    "current": "Your current language is {language}",
+    "unsupported": "Unsupported language code. Available: {available}",
+    "help": "Change your language preference",
+    "embed_title": "Language Settings",
+    "current_field": "Current Language",
+    "available_field": "Available Languages",
+    "show_all_hint": "Use the 'show_all' option to list all {count} languages.",
+    "change_hint": "Provide a code to change your language.",
+    "names": {
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French",
+      "de": "German",
+      "ru": "Russian",
+      "ja-JP": "Japanese"
+    }
+  },
+  "utilities": {
+    "title": "{name}'s information",
+    "description": "{name} information",
+    "bot_latency": "Bot Latency",
+    "database_latency": "Database Latency",
+    "offline": "Offline",
+    "powered_by": "Powered by {name}"
+  }
+}
