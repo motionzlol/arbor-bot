@@ -1,0 +1,174 @@
+{
+  "generic": {
+    "when": "Kur",
+    "channel": "Kanal",
+    "reason": "Arsye",
+    "unlocks": "Zhbllokon",
+    "time_remaining": "Koha e mbetur",
+    "requested_by": "Kërkuar nga {name}",
+    "required": "E domosdoshme",
+    "missing": "Mungon",
+    "none": "Asnjë"
+  },
+  "errors": {
+    "invalid_time_format": "Format kohe i pavlefshëm. Përdor formate si: 1h30m, 2d, 14:30, 25/12/2024 15:00",
+    "time_must_be_future": "Koha e kujtesës duhet të jetë në të ardhmen",
+    "schedule_time_must_be_future": "Koha e eventit duhet të jetë në të ardhmen",
+    "failed_set_reminder": "Dështoi vendosja e kujtesës: {error}",
+    "failed_create_schedule": "Dështoi krijimi i eventit: {error}",
+    "no_messages_found": "Nuk u gjetën mesazhe në atë kanal.",
+    "no_permission_history": "Nuk kam leje të shoh historikun e atij kanali.",
+    "failed_fetch_first_message": "Dështoi marrja e mesazhit të parë: {error}",
+    "invalid_color_format": "Format ngjyrash i pavlefshëm. Përdor një kod hex si #FF5733 ose vlera RGB si '255 87 51'",
+    "cannot_give_rep": "Nuk mund t'i japësh reputacion atij përdoruesi",
+    "rep_cooldown": "Mund të japësh reputacion sërish pas {hours}h {minutes}m",
+    "failed_set_afk": "Dështoi vendosja e statusit AFK: {error}",
+    "failed_clear_afk": "Dështoi heqja e statusit AFK: {error}",
+    "invalid_duration_format": "Format i pavlefshëm kohëzgjatjeje. Përdor p.sh. 10m, 2h, 1d, 1:30"
+  },
+  "reminders": {
+    "set_title": "Kujtesa u vendos",
+    "set_description": "Do të të kujtoj: **{what}**",
+    "reminder_title": "Kujtesë",
+    "reminder_description": "**{message}**",
+    "footer_for": "Kujtesë për {name}"
+  },
+  "schedules": {
+    "scheduled_title": "Ngjarje e planifikuar",
+    "scheduled_description": "**{title}**",
+    "starting_now": "**{title}** po fillon tani!"
+  },
+  "avatar": {
+    "title": "Avatari i {name}"
+  },
+  "color": {
+    "title": "Mostra e ngjyrës"
+  },
+  "firstmessage": {
+    "title": "Mesazhi i parë",
+    "jump": "Shko te mesazhi",
+    "author": "Autori"
+  },
+  "rep": {
+    "given_title": "Reputacion i dhënë",
+    "given_description": "{giver} i dha një pikë reputacioni {user}{reason_suffix}"
+  },
+  "userinfo": {
+    "basic_information": "Informacione bazë",
+    "username": "Emri i përdoruesit",
+    "id": "ID",
+    "reputation": "Reputacion",
+    "account_age": "Mosha e llogarisë",
+    "created": "Krijuar",
+    "server_information": "Informacione të serverit",
+    "nickname": "Nofkë",
+    "joined": "U bashkua",
+    "server_age": "Kohëzgjatja në server",
+    "top_roles": "Rolet kryesore",
+    "status_activity": "Statusi dhe aktiviteti",
+    "status": "Statusi",
+    "activity": "Aktiviteti",
+    "days": "{days} ditë",
+    "statuses": {
+      "online": "Në linjë",
+      "idle": "Joaktiv",
+      "dnd": "Mos shqetëso",
+      "offline": "Jashtë linje",
+      "unknown": "E panjohur"
+    },
+    "activities": {
+      "none": "Pa aktivitet",
+      "playing": "Duke luajtur {name}",
+      "streaming": "Duke transmetuar {name}",
+      "custom": "Status i personalizuar"
+    },
+    "key_permissions": "Lejet kryesore",
+    "perms": {
+      "administrator": "Administrator",
+      "manage_server": "Menaxho serverin",
+      "manage_messages": "Menaxho mesazhet",
+      "kick_members": "Përzë anëtarë",
+      "ban_members": "Ndalo anëtarë"
+    }
+  },
+  "afk": {
+    "set_title": "Statusi AFK u vendos",
+    "set_description": "Do t'u tregoj të tjerëve që je AFK: **{message}**",
+    "cleared_title": "Statusi AFK u hoq",
+    "cleared_description": "Mirë se u ktheve!",
+    "none_title": "Pa status AFK",
+    "none_description": "Nuk ishe AFK!",
+    "cleared_back": "Mirë se u ktheve! Ishe AFK për {duration}",
+    "user_is_afk_title": "{name} është AFK",
+    "footer_afk_for": "AFK për {duration}"
+  },
+  "moderation": {
+    "channel_locked": "Kanali u bllokua",
+    "channel_unlocked": "Kanali u zhbllokua",
+    "unlocked_note": "Ky kanal është zhbllokuar",
+    "auto_unlocked_note": "Ky kanal u zhbllokua automatikisht",
+    "missing_permissions": "Leje që mungojnë",
+    "bot_missing_permissions": "Botit i mungojnë lejet"
+  },
+  "fun": {
+    "coinflip_result": "**Rezultati i hedhjes së monedhës:** {result}!",
+    "coin_heads": "Kokë",
+    "coin_tails": "Bisht",
+    "dice_result": "**Rezultati i zarit:** {result}",
+    "8ball_format": "**Pyetja:** {question}\n**Përgjigjja:** {answer}",
+    "8ball_responses": [
+      "Është e sigurt.",
+      "Pa dyshim ashtu është.",
+      "Pa asnjë dyshim.",
+      "Po - patjetër.",
+      "Mund të mbështetesh në të.",
+      "Siç e shoh unë, po.",
+      "Me shumë gjasa.",
+      "Parashikimi është i mirë.",
+      "Po.",
+      "Shenjat tregojnë po.",
+      "Përgjigjja është e paqartë, provo përsëri.",
+      "Pyet përsëri më vonë.",
+      "Më mirë të mos ta them tani.",
+      "Nuk mund të parashikoj tani.",
+      "Përqendrohu dhe pyet sërish.",
+      "Mos llogarit mbi të.",
+      "Përgjigjja ime është jo.",
+      "Burimet e mia thonë jo.",
+      "Parashikimi nuk është fort i mirë.",
+      "Shumë e dyshimtë."
+    ],
+    "meme_parse_fail": "Nuk mund të përpunoja URL-në e memes. Provo përsëri.",
+    "meme_api_status": "Nuk u arrit të merrej një meme. API u përgjigj me statusin: {status}",
+    "meme_client_error": "Ndodhi një gabim gjatë lidhjes me API-në e memeve. Provo përsëri më vonë.",
+    "unexpected_error": "Ndodhi një gabim i papritur. Provo përsëri më vonë."
+  },
+  "language": {
+    "set_success": "Gjuha jote u vendos në {language}",
+    "current": "Gjuha jote aktuale është {language}",
+    "unsupported": "Kodi i gjuhës nuk mbështetet. Në dispozicion: {available}",
+    "help": "Ndrysho preferencën tënde të gjuhës",
+    "embed_title": "Cilësimet e gjuhës",
+    "current_field": "Gjuha aktuale",
+    "available_field": "Gjuhët e disponueshme",
+    "show_all_hint": "Përdor opsionin 'show_all' për të listuar të gjitha {count} gjuhët.",
+    "change_hint": "Jep një kod për të ndryshuar gjuhën.",
+    "names": {
+      "en": "Anglisht",
+      "es": "Spanjisht",
+      "fr": "Frëngjisht",
+      "de": "Gjermanisht",
+      "ru": "Rusisht",
+      "ja-JP": "Japonisht",
+      "sq": "Shqip"
+    }
+  },
+  "utilities": {
+    "title": "Informacionet e {name}",
+    "description": "Informacionet për {name}",
+    "bot_latency": "Vonesa e botit",
+    "database_latency": "Vonesa e bazës së të dhënave",
+    "offline": "Jashtë linje",
+    "powered_by": "Mundësuar nga {name}"
+  }
+}

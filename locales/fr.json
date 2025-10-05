@@ -1,5 +1,5 @@
 {
-    "generic": {
+  "generic": {
     "when": "Quand",
     "channel": "Salon",
     "reason": "Raison",
@@ -9,8 +9,8 @@
     "required": "Obligatoire",
     "missing": "Manquant",
     "none": "Aucun"
-    },
-    "errors": {
+  },
+  "errors": {
     "invalid_time_format": "Format d’heure invalide. Utilisez des formats comme : 1h30m, 2d, 14:30, 25/12/2024 15:00",
     "time_must_be_future": "L’heure du rappel doit être dans le futur",
     "schedule_time_must_be_future": "L’heure de la programmation doit être dans le futur",
@@ -25,35 +25,35 @@
     "failed_set_afk": "Échec de la définition du statut AFK : {error}",
     "failed_clear_afk": "Échec de la suppression du statut AFK : {error}",
     "invalid_duration_format": "Format de durée invalide. Utilisez par ex. 10m, 2h, 1d, 1:30"
-    },
-    "reminders": {
+  },
+  "reminders": {
     "set_title": "Rappel créé",
     "set_description": "Je vous rappellerai : {what}",
     "reminder_title": "Rappel",
     "reminder_description": "{message}",
     "footer_for": "Rappel pour {name}"
-    },
-    "schedules": {
+  },
+  "schedules": {
     "scheduled_title": "Événement planifié",
     "scheduled_description": "{title}",
     "starting_now": "{title} commence maintenant !"
-    },
-    "avatar": {
+  },
+  "avatar": {
     "title": "Avatar de {name}"
-    },
-    "color": {
+  },
+  "color": {
     "title": "Échantillon de couleur"
-    },
-    "firstmessage": {
+  },
+  "firstmessage": {
     "title": "Premier message",
     "jump": "Aller au message",
     "author": "Auteur"
-    },
-    "rep": {
+  },
+  "rep": {
     "given_title": "Réputation attribuée",
     "given_description": "{giver} a donné un point de réputation à {user}{reason_suffix}"
-    },
-    "userinfo": {
+  },
+  "userinfo": {
     "basic_information": "Informations de base",
     "username": "Nom d’utilisateur",
     "id": "ID",
@@ -70,28 +70,28 @@
     "activity": "Activité",
     "days": "{days} jours",
     "statuses": {
-    "online": "En ligne",
-    "idle": "Inactif",
-    "dnd": "Ne pas déranger",
-    "offline": "Hors ligne",
-    "unknown": "Inconnu"
+      "online": "En ligne",
+      "idle": "Inactif",
+      "dnd": "Ne pas déranger",
+      "offline": "Hors ligne",
+      "unknown": "Inconnu"
     },
     "activities": {
-    "none": "Aucune activité",
-    "playing": "Joue à {name}",
-    "streaming": "Diffuse {name}",
-    "custom": "Statut personnalisé"
+      "none": "Aucune activité",
+      "playing": "Joue à {name}",
+      "streaming": "Diffuse {name}",
+      "custom": "Statut personnalisé"
     },
     "key_permissions": "Permissions clés",
     "perms": {
-    "administrator": "Administrateur",
-    "manage_server": "Gérer le serveur",
-    "manage_messages": "Gérer les messages",
-    "kick_members": "Expulser des membres",
-    "ban_members": "Bannir des membres"
+      "administrator": "Administrateur",
+      "manage_server": "Gérer le serveur",
+      "manage_messages": "Gérer les messages",
+      "kick_members": "Expulser des membres",
+      "ban_members": "Bannir des membres"
     }
-    },
-    "afk": {
+  },
+  "afk": {
     "set_title": "Statut AFK défini",
     "set_description": "J’indiquerai aux autres que vous êtes AFK : {message}",
     "cleared_title": "Statut AFK effacé",
@@ -101,49 +101,49 @@
     "cleared_back": "Bon retour ! Vous avez été AFK pendant {duration}",
     "user_is_afk_title": "{name} est AFK",
     "footer_afk_for": "AFK depuis {duration}"
-    },
-    "moderation": {
+  },
+  "moderation": {
     "channel_locked": "Salon verrouillé",
     "channel_unlocked": "Salon déverrouillé",
     "unlocked_note": "Ce salon a été déverrouillé",
     "auto_unlocked_note": "Ce salon a été déverrouillé automatiquement",
     "missing_permissions": "Permissions manquantes",
     "bot_missing_permissions": "Permissions du bot manquantes"
-    },
-    "fun": {
+  },
+  "fun": {
     "coinflip_result": "Résultat du pile ou face : {result} !",
     "coin_heads": "Pile",
     "coin_tails": "Face",
     "dice_result": "Résultat du lancer de dé : {result}",
     "8ball_format": "Question : {question}\nRéponse : {answer}",
     "8ball_responses": [
-    "C’est certain.",
-    "C’est décidément ainsi.",
-    "Sans aucun doute.",
-    "Oui – définitivement.",
-    "Vous pouvez compter dessus.",
-    "D’après moi, oui.",
-    "Très probable.",
-    "Perspectives favorables.",
-    "Oui.",
-    "Les signes indiquent oui.",
-    "Réponse floue, réessayez.",
-    "Revenez poser la question plus tard.",
-    "Mieux vaut ne pas vous le dire maintenant.",
-    "Impossible de prédire maintenant.",
-    "Concentrez-vous et redemandez.",
-    "N’y comptez pas.",
-    "Ma réponse est non.",
-    "Mes sources disent non.",
-    "Perspectives peu encourageantes.",
-    "Très douteux."
+      "C’est certain.",
+      "C’est décidément ainsi.",
+      "Sans aucun doute.",
+      "Oui – définitivement.",
+      "Vous pouvez compter dessus.",
+      "D’après moi, oui.",
+      "Très probable.",
+      "Perspectives favorables.",
+      "Oui.",
+      "Les signes indiquent oui.",
+      "Réponse floue, réessayez.",
+      "Revenez poser la question plus tard.",
+      "Mieux vaut ne pas vous le dire maintenant.",
+      "Impossible de prédire maintenant.",
+      "Concentrez-vous et redemandez.",
+      "N’y comptez pas.",
+      "Ma réponse est non.",
+      "Mes sources disent non.",
+      "Perspectives peu encourageantes.",
+      "Très douteux."
     ],
     "meme_parse_fail": "Impossible d’analyser l’URL du mème. Veuillez réessayer.",
     "meme_api_status": "Impossible de récupérer un mème. L’API a renvoyé le statut : {status}",
     "meme_client_error": "Une erreur est survenue lors de la connexion à l’API de mèmes. Veuillez réessayer plus tard.",
     "unexpected_error": "Une erreur inattendue est survenue. Veuillez réessayer plus tard."
-    },
-    "language": {
+  },
+  "language": {
     "set_success": "Votre langue a été définie sur {language}",
     "current": "Votre langue actuelle est {language}",
     "unsupported": "Code de langue non pris en charge. Disponibles : {available}",
@@ -159,15 +159,16 @@
       "fr": "Français",
       "de": "Allemand",
       "ru": "Russe",
-      "ja-JP": "Japonais"
+      "ja-JP": "Japonais",
+      "sq": "Albanais"
     }
   },
-    "utilities": {
+  "utilities": {
     "title": "Informations de {name}",
     "description": "Informations sur {name}",
     "bot_latency": "Latence du bot",
     "database_latency": "Latence de la base de données",
     "offline": "Hors ligne",
     "powered_by": "Propulsé par {name}"
-    }
-    }
+  }
+}
