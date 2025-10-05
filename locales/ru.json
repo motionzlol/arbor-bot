@@ -21,7 +21,7 @@
     "no_messages_found": "В этом канале не найдено сообщений.",
     "no_permission_history": "У меня нет прав на просмотр истории этого канала.",
     "failed_fetch_first_message": "Не удалось получить первое сообщение: {error}",
-    "invalid_color_format": "Неверный формат цвета. Используйте шестнадцатеричный код вроде #FF5733 или значения RGB вида '255 87 51'",
+    "invalid_color_format": "Неверный формат цвета. Используйте HEX-код вроде #FF5733 или RGB '255 87 51'",
     "cannot_give_rep": "Вы не можете выдать репутацию этому пользователю",
     "rep_cooldown": "Вы сможете выдать репутацию через {hours}ч {minutes}м",
     "failed_set_afk": "Не удалось установить статус AFK: {error}",
@@ -119,7 +119,10 @@
     "unlocked_note": "Этот канал был разблокирован",
     "auto_unlocked_note": "Этот канал был автоматически разблокирован",
     "missing_permissions": "Недостаточно прав",
-    "bot_missing_permissions": "У бота нет необходимых прав"
+    "bot_missing_permissions": "У бота нет необходимых прав",
+    "slowmode_set": "Режим замедления обновлён",
+    "slowmode_off": "Выкл.",
+    "slowmode_label": "Медленный режим"
   },
   "fun": {
     "coinflip_result": "Результат подбрасывания монеты: {result}!",
@@ -180,7 +183,7 @@
     "description": "Информация о {name}",
     "bot_latency": "Задержка бота",
     "database_latency": "Задержка базы данных",
-    "offline": "офлайн",
+    "offline": "оффлайн",
     "powered_by": "Работает на {name}"
   }
 }

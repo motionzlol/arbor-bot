@@ -119,7 +119,10 @@
     "unlocked_note": "Ky kanal është zhbllokuar",
     "auto_unlocked_note": "Ky kanal u zhbllokua automatikisht",
     "missing_permissions": "Leje që mungojnë",
-    "bot_missing_permissions": "Botit i mungojnë lejet"
+    "bot_missing_permissions": "Botit i mungojnë lejet",
+    "slowmode_set": "Modaliteti i ngadalshëm u përditësua",
+    "slowmode_off": "Çaktivizuar",
+    "slowmode_label": "Modalitet i ngadalshëm"
   },
   "fun": {
     "coinflip_result": "**Rezultati i hedhjes së monedhës:** {result}!",

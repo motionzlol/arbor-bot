@@ -119,7 +119,10 @@
     "unlocked_note": "Ce salon a été déverrouillé",
     "auto_unlocked_note": "Ce salon a été déverrouillé automatiquement",
     "missing_permissions": "Permissions manquantes",
-    "bot_missing_permissions": "Permissions du bot manquantes"
+    "bot_missing_permissions": "Permissions du bot manquantes",
+    "slowmode_set": "Mode lent mis à jour",
+    "slowmode_off": "Désactivé",
+    "slowmode_label": "Mode lent"
   },
   "fun": {
     "coinflip_result": "Résultat du pile ou face : {result} !",

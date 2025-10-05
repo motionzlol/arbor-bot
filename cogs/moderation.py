@@ -139,6 +139,58 @@ class Moderation(commands.Cog):
         except Exception:
             pass
 
+    @commands.hybrid_command(name="slowmode", description="Set the current channel's slowmode duration")
+    @app_commands.describe(duration="e.g. off, 0, 10s, 2m, 1h", reason="Reason for changing slowmode")
+    @commands.has_permissions(manage_channels=True)
+    @commands.bot_has_permissions(manage_channels=True)
+    async def slowmode(self, ctx, duration: str, *, reason: str = None):
+        target: discord.TextChannel = ctx.channel
+
+        def parse_slowmode(s: str) -> int | None:
+            if s is None:
+                return None
+            s = s.strip().lower()
+            if s in {"off", "disable", "disabled", "none", "0"}:
+                return 0
+            if s.isdigit():
+                return int(s)
+            m = re.match(r"^(\d+)s$", s)
+            if m:
+                return int(m.group(1))
+            m = re.match(r"^(\d+)m$", s)
+            if m:
+                return int(m.group(1)) * 60
+            m = re.match(r"^(\d+)h$", s)
+            if m:
+                return int(m.group(1)) * 3600
+            return None
+
+        seconds = parse_slowmode(duration)
+        if seconds is None:
+            await ctx.send(i18n.t(ctx.author.id, "errors.invalid_duration_format"))
+            return
+        if seconds < 0:
+            seconds = 0
+        if seconds > 21600:
+            seconds = 21600
+
+        try:
+            await target.edit(slowmode_delay=seconds, reason=reason or "Slowmode updated")
+        except Exception:
+            await ctx.send(i18n.t(ctx.author.id, "errors.invalid_duration_format"))
+            return
+
+        embed = discord.Embed(
+            title=i18n.t(ctx.author.id, "moderation.slowmode_set"),
+            color=discord.Color.from_str(config.config_data.colors.embeds)
+        )
+        embed.add_field(name=i18n.t(ctx.author.id, "generic.channel"), value=target.mention, inline=True)
+        sm_value = i18n.t(ctx.author.id, "moderation.slowmode_off") if seconds == 0 else f"{seconds}s"
+        embed.add_field(name=i18n.t(ctx.author.id, "moderation.slowmode_label"), value=sm_value, inline=True)
+        if reason:
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.reason"), value=reason, inline=True)
+        await ctx.send(embed=embed)
+
     @lock.error
     async def lock_error(self, ctx, error):
         from discord.ext.commands import MissingPermissions, BotMissingPermissions
@@ -169,6 +221,32 @@ class Moderation(commands.Cog):
     async def unlock_error(self, ctx, error):
         from discord.ext.commands import MissingPermissions, BotMissingPermissions
         required = ["Manage Channels", "Manage Roles"]
+        if isinstance(error, MissingPermissions):
+            missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
+            embed = discord.Embed(
+                title=i18n.t(ctx.author.id, "moderation.missing_permissions"),
+                color=discord.Color.from_str(config.config_data.colors.embeds)
+            )
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.required"), value=", ".join(f"`{p}`" for p in required), inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.missing"), value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
+            await ctx.send(embed=embed)
+            return
+        if isinstance(error, BotMissingPermissions):
+            missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
+            embed = discord.Embed(
+                title=i18n.t(ctx.author.id, "moderation.bot_missing_permissions"),
+                color=discord.Color.from_str(config.config_data.colors.embeds)
+            )
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.required"), value=", ".join(f"`{p}`" for p in required), inline=False)
+            embed.add_field(name=i18n.t(ctx.author.id, "generic.missing"), value=", ".join(f"`{p}`" for p in missing) or "None", inline=False)
+            await ctx.send(embed=embed)
+            return
+        raise error
+
+    @slowmode.error
+    async def slowmode_error(self, ctx, error):
+        from discord.ext.commands import MissingPermissions, BotMissingPermissions
+        required = ["Manage Channels"]
         if isinstance(error, MissingPermissions):
             missing = [p.replace("_", " ").title() for p in getattr(error, "missing_permissions", [])]
             embed = discord.Embed(

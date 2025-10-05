@@ -119,7 +119,10 @@
     "unlocked_note": "Este canal ha sido desbloqueado",
     "auto_unlocked_note": "Este canal ha sido desbloqueado automáticamente",
     "missing_permissions": "Faltan permisos",
-    "bot_missing_permissions": "Faltan permisos del bot"
+    "bot_missing_permissions": "Faltan permisos del bot",
+    "slowmode_set": "Modo lento actualizado",
+    "slowmode_off": "Desactivado",
+    "slowmode_label": "Modo lento"
   },
   "fun": {
     "coinflip_result": "**Resultado de la moneda:** {result}!",

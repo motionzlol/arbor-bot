@@ -119,7 +119,10 @@
     "unlocked_note": "Dieser Kanal wurde entsperrt",
     "auto_unlocked_note": "Dieser Kanal wurde automatisch entsperrt",
     "missing_permissions": "Fehlende Berechtigungen",
-    "bot_missing_permissions": "Bot: Fehlende Berechtigungen"
+    "bot_missing_permissions": "Bot: Fehlende Berechtigungen",
+    "slowmode_set": "Slowmode aktualisiert",
+    "slowmode_off": "Aus",
+    "slowmode_label": "Slowmode"
   },
   "fun": {
     "coinflip_result": "**Münzwurf-Ergebnis:** {result}!",

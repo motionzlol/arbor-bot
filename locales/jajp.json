@@ -119,7 +119,10 @@
     "unlocked_note": "このチャンネルのロックは解除されました",
     "auto_unlocked_note": "このチャンネルは自動的にロック解除されました",
     "missing_permissions": "権限が不足しています",
-    "bot_missing_permissions": "ボットに必要な権限がありません"
+    "bot_missing_permissions": "ボットに必要な権限がありません",
+    "slowmode_set": "スローモードを更新しました",
+    "slowmode_off": "オフ",
+    "slowmode_label": "スローモード"
   },
   "fun": {
     "coinflip_result": "コイントスの結果: {result}！",

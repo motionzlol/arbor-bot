@@ -119,7 +119,10 @@
     "unlocked_note": "This channel has been unlocked",
     "auto_unlocked_note": "This channel has been automatically unlocked",
     "missing_permissions": "Missing Permissions",
-    "bot_missing_permissions": "Bot Missing Permissions"
+    "bot_missing_permissions": "Bot Missing Permissions",
+    "slowmode_set": "Slowmode Updated",
+    "slowmode_off": "Off",
+    "slowmode_label": "Slowmode"
   },
   "fun": {
     "coinflip_result": "**Coin flip result:** {result}!",

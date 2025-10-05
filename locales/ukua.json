@@ -119,7 +119,10 @@
     "unlocked_note": "Цей канал розблоковано",
     "auto_unlocked_note": "Цей канал автоматично розблоковано",
     "missing_permissions": "Бракує дозволів",
-    "bot_missing_permissions": "Боту бракує дозволів"
+    "bot_missing_permissions": "Боту бракує дозволів",
+    "slowmode_set": "Повільний режим оновлено",
+    "slowmode_off": "Вимкнено",
+    "slowmode_label": "Повільний режим"
   },
   "fun": {
     "coinflip_result": "**Результат підкидання монети:** {result}!",
