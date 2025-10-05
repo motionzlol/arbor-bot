@@ -15,6 +15,8 @@
     "time_must_be_future": "Reminder time must be in the future",
     "schedule_time_must_be_future": "Schedule time must be in the future",
     "failed_set_reminder": "Failed to set reminder: {error}",
+    "failed_list_reminders": "Failed to fetch reminders: {error}",
+    "failed_cancel_reminder": "Failed to cancel reminder: {error}",
     "failed_create_schedule": "Failed to create schedule: {error}",
     "no_messages_found": "No messages found in that channel.",
     "no_permission_history": "I don't have permission to view that channel's history.",
@@ -29,9 +31,18 @@
   "reminders": {
     "set_title": "Reminder Set",
     "set_description": "I'll remind you: **{what}**",
+    "set_footer": "ID: {identifier}",
     "reminder_title": "Reminder",
     "reminder_description": "**{message}**",
-    "footer_for": "Reminder for {name}"
+    "footer_for": "Reminder for {name}",
+    "list_title": "Your Reminders",
+    "list_empty": "You do not have any reminders.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID:` {identifier}\n{message}",
+    "list_footer": "Showing {count} of {total} reminders.",
+    "cancel_invalid_id": "That reminder ID is invalid.",
+    "cancel_not_found": "No reminder found for that ID.",
+    "cancel_title": "Reminder Cancelled",
+    "cancel_description": "Removed reminder **{what}** scheduled for <t:{timestamp}:R>."
   },
   "schedules": {
     "scheduled_title": "Scheduled Event",

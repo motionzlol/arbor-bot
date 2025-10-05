@@ -1,4 +1,5 @@
 import os
+import datetime
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError, ConnectionFailure
 import time
@@ -22,7 +23,12 @@ def connect_database():
         raise ValueError("Database URL not found in environment variables")
 
     try:
-        client = MongoClient(database_url, serverSelectionTimeoutMS=5000)
+        client = MongoClient(
+            database_url,
+            serverSelectionTimeoutMS=5000,
+            tz_aware=True,
+            tzinfo=datetime.timezone.utc,
+        )
         client.admin.command('ping')
 
         _database = client.Arbor

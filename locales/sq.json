@@ -15,6 +15,8 @@
     "time_must_be_future": "Koha e kujtesës duhet të jetë në të ardhmen",
     "schedule_time_must_be_future": "Koha e eventit duhet të jetë në të ardhmen",
     "failed_set_reminder": "Dështoi vendosja e kujtesës: {error}",
+    "failed_list_reminders": "Dështoi marrja e kujtesave: {error}",
+    "failed_cancel_reminder": "Dështoi anulimi i kujtesës: {error}",
     "failed_create_schedule": "Dështoi krijimi i eventit: {error}",
     "no_messages_found": "Nuk u gjetën mesazhe në atë kanal.",
     "no_permission_history": "Nuk kam leje të shoh historikun e atij kanali.",
@@ -31,7 +33,16 @@
     "set_description": "Do të të kujtoj: **{what}**",
     "reminder_title": "Kujtesë",
     "reminder_description": "**{message}**",
-    "footer_for": "Kujtesë për {name}"
+    "footer_for": "Kujtesë për {name}",
+    "set_footer": "ID: {identifier}",
+    "list_title": "Kujtesat e tua",
+    "list_empty": "Nuk ke asnjë kujtesë.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID:` {identifier}\n{message}",
+    "list_footer": "Po shfaqen {count} nga {total} kujtesat.",
+    "cancel_invalid_id": "ID e kujtesës është e pavlefshme.",
+    "cancel_not_found": "Nuk u gjet asnjë kujtesë me atë ID.",
+    "cancel_title": "Kujtesa u anulua",
+    "cancel_description": "Kujtesa **{what}** e planifikuar për <t:{timestamp}:R> u hoq."
   },
   "schedules": {
     "scheduled_title": "Ngjarje e planifikuar",

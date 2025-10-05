@@ -15,6 +15,8 @@
     "time_must_be_future": "L’heure du rappel doit être dans le futur",
     "schedule_time_must_be_future": "L’heure de la programmation doit être dans le futur",
     "failed_set_reminder": "Échec de la création du rappel : {error}",
+    "failed_list_reminders": "Impossible de récupérer les rappels : {error}",
+    "failed_cancel_reminder": "Impossible d'annuler le rappel : {error}",
     "failed_create_schedule": "Échec de la création du programme : {error}",
     "no_messages_found": "Aucun message trouvé dans ce salon.",
     "no_permission_history": "Je n’ai pas l’autorisation de voir l’historique de ce salon.",
@@ -31,7 +33,16 @@
     "set_description": "Je vous rappellerai : {what}",
     "reminder_title": "Rappel",
     "reminder_description": "{message}",
-    "footer_for": "Rappel pour {name}"
+    "footer_for": "Rappel pour {name}",
+    "set_footer": "ID : {identifier}",
+    "list_title": "Vos rappels",
+    "list_empty": "Vous n'avez aucun rappel.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID :` {identifier}\n{message}",
+    "list_footer": "Affichage de {count} sur {total} rappels.",
+    "cancel_invalid_id": "Cet ID de rappel est invalide.",
+    "cancel_not_found": "Aucun rappel trouvé avec cet ID.",
+    "cancel_title": "Rappel annulé",
+    "cancel_description": "Rappel **{what}** prévu pour <t:{timestamp}:R> supprimé."
   },
   "schedules": {
     "scheduled_title": "Événement planifié",

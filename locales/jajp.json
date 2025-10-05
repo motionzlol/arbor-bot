@@ -15,6 +15,8 @@
     "time_must_be_future": "リマインダーの時刻は未来である必要があります",
     "schedule_time_must_be_future": "スケジュールの時刻は未来である必要があります",
     "failed_set_reminder": "リマインダーの設定に失敗しました: {error}",
+    "failed_list_reminders": "リマインダーを取得できませんでした: {error}",
+    "failed_cancel_reminder": "リマインダーをキャンセルできませんでした: {error}",
     "failed_create_schedule": "スケジュールの作成に失敗しました: {error}",
     "no_messages_found": "そのチャンネルにはメッセージが見つかりませんでした。",
     "no_permission_history": "そのチャンネルの履歴を表示する権限がありません。",
@@ -31,7 +33,16 @@
     "set_description": "次の内容をリマインドします: {what}",
     "reminder_title": "リマインダー",
     "reminder_description": "{message}",
-    "footer_for": "{name} へのリマインダー"
+    "footer_for": "{name} へのリマインダー",
+    "set_footer": "ID: {identifier}",
+    "list_title": "あなたのリマインダー",
+    "list_empty": "リマインダーはありません。",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID:` {identifier}\n{message}",
+    "list_footer": "{total} 件中 {count} 件を表示しています。",
+    "cancel_invalid_id": "リマインダー ID が無効です。",
+    "cancel_not_found": "その ID のリマインダーは見つかりませんでした。",
+    "cancel_title": "リマインダーを削除しました",
+    "cancel_description": "<t:{timestamp}:R> に予定されていた **{what}** のリマインダーを削除しました。"
   },
   "schedules": {
     "scheduled_title": "予定されたイベント",

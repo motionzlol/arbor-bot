@@ -7,6 +7,9 @@ import re
 import config
 import database
 import i18n
+from pymongo import ASCENDING
+from bson.objectid import ObjectId
+from bson.errors import InvalidId
 from PIL import Image, ImageDraw, ImageFont
 import io
 
@@ -25,6 +28,14 @@ class QoL(commands.Cog):
         hours, remainder = divmod(int(time_diff.total_seconds()), 3600)
         minutes, _ = divmod(remainder, 60)
         return f"{hours}h {minutes}m"
+
+    @staticmethod
+    def _ensure_utc(dt):
+        if dt is None:
+            return None
+        if dt.tzinfo is None:
+            return dt.replace(tzinfo=datetime.timezone.utc)
+        return dt.astimezone(datetime.timezone.utc)
 
     def parse_time(self, time_str, user):
         now = datetime.datetime.now(datetime.timezone.utc)
@@ -71,25 +82,19 @@ class QoL(commands.Cog):
 
         return None
 
-    @commands.hybrid_command(name="remind", description="Set a reminder")
-    async def remind(self, ctx, when: str, *, what: str):
+    async def _create_reminder(self, ctx, when: str, what: str):
         reminder_time = self.parse_time(when, ctx.author)
-
         if not reminder_time:
             await ctx.send(i18n.t(ctx.author.id, "errors.invalid_time_format"))
             return
-
         if isinstance(reminder_time, datetime.timedelta):
             reminder_time = datetime.datetime.now(datetime.timezone.utc) + reminder_time
-
         if reminder_time <= datetime.datetime.now(datetime.timezone.utc):
             await ctx.send(i18n.t(ctx.author.id, "errors.time_must_be_future"))
             return
-
         try:
             db = database.get_database()
             reminders_collection = db.reminders
-
             reminder_data = {
                 "user_id": ctx.author.id,
                 "channel_id": ctx.channel.id,
@@ -98,14 +103,11 @@ class QoL(commands.Cog):
                 "recurring": None,
                 "created_at": datetime.datetime.now(datetime.timezone.utc)
             }
-
-            reminders_collection.insert_one(reminder_data)
-
+            result = reminders_collection.insert_one(reminder_data)
             time_diff = reminder_time - datetime.datetime.now(datetime.timezone.utc)
             total_secs = int(time_diff.total_seconds())
             hours, remainder = divmod(max(total_secs, 0), 3600)
             minutes, seconds = divmod(remainder, 60)
-
             embed = discord.Embed(
                 title=i18n.t(ctx.author.id, "reminders.set_title"),
                 description=i18n.t(ctx.author.id, "reminders.set_description", what=what),
@@ -116,11 +118,92 @@ class QoL(commands.Cog):
                 f"{hours}h {minutes}m {seconds}s" if hours else (f"{minutes}m {seconds}s" if minutes else f"{seconds}s")
             )
             embed.add_field(name=i18n.t(ctx.author.id, "generic.time_remaining"), value=pretty_remaining, inline=True)
-
+            embed.set_footer(text=i18n.t(ctx.author.id, "reminders.set_footer", identifier=str(result.inserted_id)))
             await ctx.send(embed=embed)
-
         except Exception as e:
             await ctx.send(i18n.t(ctx.author.id, "errors.failed_set_reminder", error=str(e)))
+
+    @commands.hybrid_group(name="remind", description="Manage reminders", invoke_without_command=True)
+    async def remind(self, ctx, when: str | None = None, *, what: str | None = None):
+        if ctx.invoked_subcommand is not None:
+            return
+        if when is None or what is None:
+            await ctx.send_help(ctx.command)
+            return
+        await self._create_reminder(ctx, when, what)
+
+    @remind.command(name="set", description="Set a reminder")
+    @app_commands.describe(when="When should I remind you?", what="What should I remind you about?")
+    async def remind_set(self, ctx, when: str, *, what: str):
+        await self._create_reminder(ctx, when, what)
+
+    @remind.command(name="list", description="List your reminders")
+    async def remind_list(self, ctx):
+        try:
+            db = database.get_database()
+            reminders_collection = db.reminders
+            reminders = list(reminders_collection.find({"user_id": ctx.author.id}).sort("remind_at", ASCENDING))
+        except Exception as e:
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_list_reminders", error=str(e)))
+            return
+        if not reminders:
+            await ctx.send(i18n.t(ctx.author.id, "reminders.list_empty"))
+            return
+        embed = discord.Embed(
+            title=i18n.t(ctx.author.id, "reminders.list_title"),
+            color=discord.Color.from_str(config.config_data.colors.embeds)
+        )
+        lines = []
+        limit = 10
+        for index, reminder in enumerate(reminders[:limit], 1):
+            remind_at = self._ensure_utc(reminder.get("remind_at"))
+            timestamp = int(remind_at.timestamp()) if remind_at else int(datetime.datetime.now(datetime.timezone.utc).timestamp())
+            channel = self.client.get_channel(reminder.get("channel_id"))
+            channel_text = channel.mention if channel else f"<#{reminder.get('channel_id')}>"
+            message_text = reminder.get("message", "")
+            if len(message_text) > 80:
+                message_text = message_text[:77] + "..."
+            identifier = str(reminder.get("_id"))
+            lines.append(i18n.t(
+                ctx.author.id,
+                "reminders.list_entry",
+                index=index,
+                timestamp=timestamp,
+                channel=channel_text,
+                message=message_text,
+                identifier=identifier
+            ))
+        embed.description = "\n\n".join(lines)
+        if len(reminders) > limit:
+            embed.set_footer(text=i18n.t(ctx.author.id, "reminders.list_footer", count=limit, total=len(reminders)))
+        await ctx.send(embed=embed)
+
+    @remind.command(name="cancel", description="Cancel one of your reminders")
+    @app_commands.describe(reminder_id="Use the ID from /remind list")
+    async def remind_cancel(self, ctx, reminder_id: str):
+        try:
+            object_id = ObjectId(reminder_id)
+        except (InvalidId, TypeError):
+            await ctx.send(i18n.t(ctx.author.id, "reminders.cancel_invalid_id"))
+            return
+        try:
+            db = database.get_database()
+            reminders_collection = db.reminders
+            reminder = reminders_collection.find_one_and_delete({"_id": object_id, "user_id": ctx.author.id})
+        except Exception as e:
+            await ctx.send(i18n.t(ctx.author.id, "errors.failed_cancel_reminder", error=str(e)))
+            return
+        if not reminder:
+            await ctx.send(i18n.t(ctx.author.id, "reminders.cancel_not_found"))
+            return
+        remind_at = self._ensure_utc(reminder.get("remind_at"))
+        timestamp = int(remind_at.timestamp()) if remind_at else int(datetime.datetime.now(datetime.timezone.utc).timestamp())
+        embed = discord.Embed(
+            title=i18n.t(ctx.author.id, "reminders.cancel_title"),
+            description=i18n.t(ctx.author.id, "reminders.cancel_description", what=reminder.get("message", ""), timestamp=timestamp),
+            color=discord.Color.from_str(config.config_data.colors.embeds)
+        )
+        await ctx.send(embed=embed)
 
 
     @commands.hybrid_command(name="schedule", description="Create a scheduled event")

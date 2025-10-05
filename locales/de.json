@@ -15,6 +15,8 @@
     "time_must_be_future": "Erinnerungszeit muss in der Zukunft liegen",
     "schedule_time_must_be_future": "Planungszeit muss in der Zukunft liegen",
     "failed_set_reminder": "Erinnerung konnte nicht gesetzt werden: {error}",
+    "failed_list_reminders": "Erinnerungen konnten nicht geladen werden: {error}",
+    "failed_cancel_reminder": "Erinnerung konnte nicht gelöscht werden: {error}",
     "failed_create_schedule": "Termin konnte nicht erstellt werden: {error}",
     "no_messages_found": "Keine Nachrichten in diesem Kanal gefunden.",
     "no_permission_history": "Ich habe keine Berechtigung, den Verlauf dieses Kanals anzusehen.",
@@ -31,7 +33,16 @@
     "set_description": "Ich erinnere dich an: **{what}**",
     "reminder_title": "Erinnerung",
     "reminder_description": "**{message}**",
-    "footer_for": "Erinnerung für {name}"
+    "footer_for": "Erinnerung für {name}",
+    "set_footer": "ID: {identifier}",
+    "list_title": "Deine Erinnerungen",
+    "list_empty": "Du hast keine Erinnerungen.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID:` {identifier}\n{message}",
+    "list_footer": "Zeige {count} von {total} Erinnerungen.",
+    "cancel_invalid_id": "Diese Erinnerungs-ID ist ungültig.",
+    "cancel_not_found": "Keine Erinnerung mit dieser ID gefunden.",
+    "cancel_title": "Erinnerung gelöscht",
+    "cancel_description": "Erinnerung **{what}** für <t:{timestamp}:R> wurde gelöscht."
   },
   "schedules": {
     "scheduled_title": "Geplanter Termin",

@@ -15,6 +15,8 @@
     "time_must_be_future": "La hora del recordatorio debe ser en el futuro",
     "schedule_time_must_be_future": "La hora del evento debe ser en el futuro",
     "failed_set_reminder": "No se pudo crear el recordatorio: {error}",
+    "failed_list_reminders": "No se pudieron obtener los recordatorios: {error}",
+    "failed_cancel_reminder": "No se pudo cancelar el recordatorio: {error}",
     "failed_create_schedule": "No se pudo crear el evento: {error}",
     "no_messages_found": "No se encontraron mensajes en ese canal.",
     "no_permission_history": "No tengo permiso para ver el historial de ese canal.",
@@ -29,9 +31,18 @@
   "reminders": {
     "set_title": "Recordatorio creado",
     "set_description": "Te recordaré: **{what}**",
+    "set_footer": "ID: {identifier}",
     "reminder_title": "Recordatorio",
     "reminder_description": "**{message}**",
-    "footer_for": "Recordatorio para {name}"
+    "footer_for": "Recordatorio para {name}",
+    "list_title": "Tus recordatorios",
+    "list_empty": "No tienes recordatorios.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID:` {identifier}\n{message}",
+    "list_footer": "Mostrando {count} de {total} recordatorios.",
+    "cancel_invalid_id": "Ese ID de recordatorio no es válido.",
+    "cancel_not_found": "No se encontró un recordatorio con ese ID.",
+    "cancel_title": "Recordatorio cancelado",
+    "cancel_description": "Recordatorio **{what}** programado para <t:{timestamp}:R> eliminado."
   },
   "schedules": {
     "scheduled_title": "Evento programado",

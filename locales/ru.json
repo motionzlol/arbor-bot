@@ -15,6 +15,8 @@
     "time_must_be_future": "Время напоминания должно быть в будущем",
     "schedule_time_must_be_future": "Время расписания должно быть в будущем",
     "failed_set_reminder": "Не удалось установить напоминание: {error}",
+    "failed_list_reminders": "Не удалось получить напоминания: {error}",
+    "failed_cancel_reminder": "Не удалось отменить напоминание: {error}",
     "failed_create_schedule": "Не удалось создать расписание: {error}",
     "no_messages_found": "В этом канале не найдено сообщений.",
     "no_permission_history": "У меня нет прав на просмотр истории этого канала.",
@@ -31,7 +33,16 @@
     "set_description": "Я напомню вам: {what}",
     "reminder_title": "Напоминание",
     "reminder_description": "{message}",
-    "footer_for": "Напоминание для {name}"
+    "footer_for": "Напоминание для {name}",
+    "set_footer": "ID: {identifier}",
+    "list_title": "Ваши напоминания",
+    "list_empty": "У вас нет напоминаний.",
+    "list_entry": "{index}. <t:{timestamp}:R> • {channel}\n`ID:` {identifier}\n{message}",
+    "list_footer": "Показано {count} из {total} напоминаний.",
+    "cancel_invalid_id": "Недопустимый ID напоминания.",
+    "cancel_not_found": "Напоминание с таким ID не найдено.",
+    "cancel_title": "Напоминание отменено",
+    "cancel_description": "Напоминание **{what}**, запланированное на <t:{timestamp}:R>, удалено."
   },
   "schedules": {
     "scheduled_title": "Запланированное событие",
