@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import random
 from typing import Optional
-import aiohttp  # Import the aiohttp library for async web requests
+import aiohttp
 
 class FunCog(commands.Cog):
 

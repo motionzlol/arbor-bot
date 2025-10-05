@@ -5,12 +5,11 @@ import time
 
 _database = None
 
-# Load environment variables for database
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
-    pass  # dotenv not installed, will rely on system env vars
+    pass 
 
 def connect_database():
     global _database
@@ -24,20 +23,30 @@ def connect_database():
 
     try:
         client = MongoClient(database_url, serverSelectionTimeoutMS=5000)
-        # Test the connection
         client.admin.command('ping')
 
-        # Get or create database
         _database = client.Arbor
 
-        # Create collections if they don't exist
         if 'Arbor' not in _database.list_collection_names():
             _database.create_collection('Arbor')
 
         if 'user_language_preferences' not in _database.list_collection_names():
             _database.create_collection('user_language_preferences')
 
-        return _database
+        if 'reminders' not in _database.list_collection_names():
+            _database.create_collection('reminders')
+
+        if 'schedules' not in _database.list_collection_names():
+            _database.create_collection('schedules')
+
+        if 'afk' not in _database.list_collection_names():
+            _database.create_collection('afk')
+
+        if 'reputation' not in _database.list_collection_names():
+            _database.create_collection('reputation')
+        
+        if 'rep_cooldowns' not in _database.list_collection_names():
+            _database.create_collection('rep_cooldowns')
 
     except (ServerSelectionTimeoutError, ConnectionFailure) as e:
         raise ConnectionError(f"Failed to connect to database: {e}")
@@ -55,6 +64,6 @@ def ping_database():
         start_time = time.time()
         db.command('ping')
         end_time = time.time()
-        return round((end_time - start_time) * 1000)  # Return ping in milliseconds
+        return round((end_time - start_time) * 1000)
     except Exception:
         return None
